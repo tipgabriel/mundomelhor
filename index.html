@@ -4,10 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>A Crônica Diária - Notícias Frescas, Perspectivas Profundas</title>
-    <link rel="stylesheet" href="./public/css/tailwind.css">
-    <link rel="stylesheet" href="./public/css/style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    <!-- JSON-LD para a página inicial (Website) -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -24,11 +22,67 @@
       }
     }
     </script>
+    <style>
+        .font-serif {
+            font-family: 'Playfair Display', serif;
+        }
+        .font-sans {
+            font-family: 'Roboto', sans-serif;
+        }
+        .text-dark-text {
+            color: #333333;
+        }
+        .bg-light-bg {
+            background-color: #F4F4F4;
+        }
+        .bg-primary-dark {
+            background-color: #1A232F;
+        }
+        .text-secondary-gold {
+            color: #FFD700;
+        }
+        .hover\:text-secondary-gold:hover {
+            color: #FFD700;
+        }
+        .bg-secondary-gold {
+            background-color: #FFD700;
+        }
+        .hover\:bg-yellow-600:hover {
+            background-color: #C5A000;
+        }
+        .text-interactive-accent {
+            color: #007BFF;
+        }
+        .hover\:text-interactive-accent:hover {
+            color: #0056b3;
+        }
+        .border-secondary-gold {
+            border-color: #FFD700;
+        }
+        .hero-section {
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.1));
+        }
+        .hero-section > div {
+            position: relative;
+            color: white;
+            z-index: 10;
+        }
+    </style>
 </head>
 <body class="font-sans bg-light-bg text-dark-text">
 
-    <!-- Cabeçalho Fixo -->
-    <header class="sticky-header bg-primary-dark text-white p-4 shadow-lg">
+    <header class="sticky top-0 z-50 bg-primary-dark text-white p-4 shadow-lg">
         <div class="container mx-auto flex justify-between items-center">
             <a href="index.html" class="text-3xl font-serif font-bold text-secondary-gold">A Crônica Diária</a>
             <nav class="hidden md:flex space-x-6">
@@ -42,16 +96,14 @@
             </nav>
             <div class="flex items-center space-x-4">
                 <input type="search" placeholder="Buscar..." class="p-2 rounded bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-secondary-gold">
-                <button class="md:hidden text-white text-2xl">&#9776;</button> <!-- Ícone de hambúrguer -->
-            </div>
+                <button class="md:hidden text-white text-2xl">&#9776;</button> </div>
         </div>
     </header>
 
     <main class="container mx-auto p-4 mt-8">
 
-        <!-- Hero Section -->
-        <section class="hero-section rounded-lg overflow-hidden mb-12 shadow-xl" 
-                   style="background-image: url('./public/img/hero-bg.jpg'); min-height: 400px; display: flex; align-items: flex-end;">
+        <section class="hero-section rounded-lg overflow-hidden mb-12 shadow-xl"
+                        style="background-image: url('./public/img/hero-bg.jpg'); min-height: 400px; display: flex; align-items: flex-end;">
             <div class="p-8 pb-12 w-full md:w-2/3">
                 <span class="text-sm font-semibold text-interactive-accent uppercase">Mundo em Transição</span>
                 <h1 class="text-5xl md:text-6xl font-serif font-bold leading-tight mt-2">LÍDERES GLOBAIS DEBATEM FUTURO DA ENERGIA LIMPA</h1>
@@ -60,11 +112,9 @@
             </div>
         </section>
         
-        <!-- Top Stories / Últimas Notícias -->
         <section class="mb-12">
             <h2 class="text-4xl font-serif font-bold mb-8 border-b-2 border-secondary-gold pb-2">Últimas Notícias</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <!-- Card de Notícia Exemplo -->
                 <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300">
                     <img src="./public/img/news1.jpg" alt="Avanços em IA" class="w-full h-48 object-cover">
                     <div class="p-4">
@@ -73,7 +123,6 @@
                         <p class="text-gray-700 mt-2 text-sm">Novas descobertas prometem revolucionar diversos setores, da saúde à educação.</p>
                     </div>
                 </div>
-                <!-- Repita o card acima para mais 3 notícias -->
                 <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300">
                     <img src="./public/img/news2.jpg" alt="Mercado de Cripto" class="w-full h-48 object-cover">
                     <div class="p-4">
@@ -101,11 +150,9 @@
             </div>
         </section>
 
-        <!-- Seções de Categorias -->
         <section class="mb-12">
             <h2 class="text-4xl font-serif font-bold mb-8 border-b-2 border-secondary-gold pb-2">Política</h2>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <!-- Card de Notícia Polítca -->
                 <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300">
                     <img src="./public/img/politica1.jpg" alt="Eleições" class="w-full h-48 object-cover">
                     <div class="p-4">
@@ -113,7 +160,6 @@
                         <p class="text-gray-700 mt-2 text-sm">A reta final da campanha eleitoral promete debates acalorados e reviravoltas.</p>
                     </div>
                 </div>
-                <!-- ... mais cards de política -->
                 <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300">
                     <img src="./public/img/politica2.jpg" alt="Cúpula do Clima" class="w-full h-48 object-cover">
                     <div class="p-4">
@@ -134,7 +180,6 @@
         <section class="mb-12">
             <h2 class="text-4xl font-serif font-bold mb-8 border-b-2 border-secondary-gold pb-2">Tecnologia</h2>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <!-- Card de Notícia Tecnologia -->
                 <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300">
                     <img src="./public/img/tech1.jpg" alt="Inteligência Artificial" class="w-full h-48 object-cover">
                     <div class="p-4">
@@ -142,7 +187,6 @@
                         <p class="text-gray-700 mt-2 text-sm">Explorando os limites da IA e seu impacto na sociedade.</p>
                     </div>
                 </div>
-                <!-- ... mais cards de tecnologia -->
                 <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300">
                     <img src="./public/img/tech2.jpg" alt="Realidade Virtual" class="w-full h-48 object-cover">
                     <div class="p-4">
@@ -160,11 +204,8 @@
             </div>
         </section>
         
-        <!-- Adicione mais seções de categorias conforme necessário -->
+        </main>
 
-    </main>
-
-    <!-- Rodapé -->
     <footer class="bg-primary-dark text-white p-8 mt-12">
         <div class="container mx-auto text-center md:flex md:justify-between md:items-center">
             <div class="mb-4 md:mb-0">
@@ -189,8 +230,6 @@
         </div>
     </footer>
 
-    <script src="./public/js/main.js"></script>
-    <!-- Para ícones de redes sociais (opcional) -->
-    <script src="https://kit.fontawesome.com/your-font-awesome-kit-id.js" crossorigin="anonymous"></script> 
+    <script src="https://kit.fontawesome.com/your-font-awesome-kit-id.js" crossorigin="anonymous"></script>
 </body>
 </html>
