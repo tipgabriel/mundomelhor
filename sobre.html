@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Política - A Crônica Diária</title>
+    <title>Sobre Nós - TIP: Boas Notícias para Tempos Urgentes</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <style>
@@ -12,10 +12,10 @@
         .text-dark-text { color: #333333; }
         .bg-light-bg { background-color: #F4F4F4; }
         .bg-primary-dark {
-            background-color: #181818;
+            background-color: #181818; /* Cor escura do cabeçalho */
         }
         .text-secondary-gold {
-            color: #FFF;
+            color: #FFF; /* Cor principal de destaque no cabeçalho */
         }
         .hover\:text-secondary-gold:hover { color: #FFD700; }
         .bg-secondary-gold { background-color: #FFD700; }
@@ -37,7 +37,7 @@
                 <a href="meio-ambiente.html?cat=meio-ambiente" class="hover:text-secondary-gold transition-colors">Meio Ambiente</a>
                 <a href="historias-inspiradoras.html?cat=historias-inspiradoras" class="hover:text-secondary-gold transition-colors">Histórias Inspiradoras</a>
                 <a href="mundo-melhor.html?cat=mundo-melhor" class="hover:text-secondary-gold transition-colors">Mundo Melhor</a>
-                <a href="sobre.html" class="hover:text-secondary-gold transition-colors">Sobre Nós</a>
+                <a href="sobre.html" class="text-secondary-gold transition-colors border-b-2 border-secondary-gold">Sobre Nós</a>
                 <a href="contato.html" class="hover:text-secondary-gold transition-colors">Contato</a>
             </nav>
             <div class="flex items-center space-x-4">
@@ -48,32 +48,46 @@
     </header>
 
     <main class="container mx-auto p-4 mt-8">
-        <h1 class="text-5xl font-serif font-bold mb-8 border-b-2 border-secondary-gold pb-2">Política</h1>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300">
-                <img src="./public/img/politica1.jpg" alt="Eleições" class="w-full h-48 object-cover">
-                <div class="p-4">
-                    <span class="text-xs font-semibold text-gray-500 uppercase">Política</span>
-                    <h3 class="text-xl font-serif font-bold mt-2 leading-tight"><a href="noticia.html?id=6" class="hover:text-interactive-accent">Tensão nas Eleições: Candidatos Apresentam Propostas Finais</a></h3>
-                    <p class="text-gray-700 mt-2 text-sm">A reta final da campanha eleitoral promete debates acalorados e reviravoltas.</p>
+        <h1 class="text-5xl font-serif font-bold mb-8 border-b-2 border-secondary-gold pb-2">Nossa Missão Jornalística</h1>
+        
+        <div class="bg-white rounded-lg shadow-xl p-8 md:p-12 max-w-4xl mx-auto">
+
+            <section class="mb-10">
+                <h2 class="text-3xl font-serif font-bold text-primary-dark mb-4">TIP: Jornalismo Focado em Soluções e Progresso.</h2>
+                <p class="text-lg text-gray-700 mb-4 leading-relaxed">
+                    A **TIP** nasce com o compromisso de redefinir o panorama noticioso. Acreditamos que o jornalismo deve ir além da mera reportagem de problemas, focando na **análise profunda das soluções** e no impacto positivo das inovações globais. Nossa missão é entregar conteúdo rigoroso, imparcial e, acima de tudo, inspirador, que informe e capacite nossos leitores a serem agentes de mudança.
+                </p>
+                <p class="text-lg text-gray-700 leading-relaxed italic border-l-4 border-secondary-gold pl-4">
+                    "Em tempos de urgência global, a informação que constrói é a nossa maior ferramenta."
+                </p>
+            </section>
+
+            <section class="mt-12 pt-8 border-t border-gray-200">
+                <h2 class="text-3xl font-serif font-bold text-primary-dark mb-6">Conheça o Editor-Chefe</h2>
+                
+                <div class="md:flex md:space-x-8 items-start">
+                    <div class="flex-shrink-0 mb-6 md:mb-0">
+                        <img src="./public/img/perfil_autor.jpg" alt="Foto do Editor-Chefe" class="w-40 h-40 object-cover rounded-full shadow-lg border-4 border-secondary-gold mx-auto md:mx-0">
+                    </div>
+                    
+                    <div class="md:flex-grow prose max-w-none">
+                        <h3 class="text-2xl font-serif font-bold mb-2">Seu Nome Aqui</h3>
+                        <p class="text-interactive-accent font-semibold mb-4">Jornalista | Fundador da TIP</p>
+                        
+                        <p class="text-gray-800 mb-4">
+                            [**Insira seu texto profissional aqui:**] Com mais de uma década dedicada ao jornalismo de investigação em veículos [mencione veículos de prestígio, se houver], trago uma visão consolidada sobre o poder da informação. Minha trajetória é marcada pela cobertura de temas complexos [mencione áreas de especialidade, ex: sustentabilidade, inovação social] e pela busca incessante por narrativas que promovam o entendimento e a ação. Fundei a TIP com o objetivo de canalizar essa experiência para um jornalismo que inspira o futuro.
+                        </p>
+                        <p class="text-gray-800">
+                            Minha expertise em [sua área] garante a curadoria e a profundidade de cada artigo, assegurando que o leitor receba não apenas a notícia, mas o **contexto** e a **perspectiva** necessários para formar uma visão informada.
+                        </p>
+                        
+                        <div class="mt-4 text-xl space-x-4">
+                            <a href="#" class="text-gray-600 hover:text-interactive-accent transition-colors" title="Perfil Profissional"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#" class="text-gray-600 hover:text-interactive-accent transition-colors" title="Twitter Profissional"><i class="fab fa-twitter"></i></a>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300">
-                <img src="./public/img/politica2.jpg" alt="Cúpula do Clima" class="w-full h-48 object-cover">
-                <div class="p-4">
-                    <span class="text-xs font-semibold text-gray-500 uppercase">Política</span>
-                    <h3 class="text-xl font-serif font-bold mt-2 leading-tight"><a href="noticia.html?id=7" class="hover:text-interactive-accent">Cúpula do Clima Busca Acordos Urgentes contra o Aquecimento Global</a></h3>
-                    <p class="text-gray-700 mt-2 text-sm">Líderes mundiais se reúnem para discutir metas ambiciosas.</p>
-                </div>
-            </div>
-            <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300">
-                <img src="./public/img/politica3.jpg" alt="Reforma Tributária" class="w-full h-48 object-cover">
-                <div class="p-4">
-                    <span class="text-xs font-semibold text-gray-500 uppercase">Política</span>
-                    <h3 class="text-xl font-serif font-bold mt-2 leading-tight"><a href="noticia.html?id=8" class="hover:text-interactive-accent">Reforma Tributária: Pontos Chave e Impacto na Economia</a></h3>
-                    <p class="text-gray-700 mt-2 text-sm">Entenda as mudanças propostas e o que elas significam para você.</p>
-                </div>
-            </div>
+            </section>
         </div>
     </main>
 
