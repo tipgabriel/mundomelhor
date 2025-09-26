@@ -10,7 +10,6 @@
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
 <meta name="apple-mobile-web-app-title" content="Tip" />
 <link rel="manifest" href="/site.webmanifest" />
-    <link rel="stylesheet" href="style.css">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <script type="application/ld+json">
@@ -29,11 +28,68 @@
       }
     }
     </script>
+    <style>
+        .font-serif {
+            font-family: 'Playfair Display', serif;
+        }
+        .font-sans {
+            font-family: 'Roboto', sans-serif;
+        }
+        .text-dark-text {
+            color: #333333;
+        }
+        .bg-light-bg {
+            background-color: #F4F4F4;
+        }
+        .bg-primary-dark {
+            background-color: #181818;
+        }
+        .text-secondary-gold {
+            color: #FFF;
+        }
+        .hover\:text-secondary-gold:hover {
+            color: #FFD700;
+        }
+        .bg-secondary-gold {
+            background-color: #181818;
+        }
+        .hover\:bg-yellow-600:hover {
+            background-color: #0056b3;
+        }
+        .text-interactive-accent {
+            color: #007BFF;
+        }
+        .hover\:text-interactive-accent:hover {
+            color: #0056b3;
+        }
+        .border-secondary-gold {
+            border-color: #FFD700;
+        }
+        .hero-section {
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background: linear-gradient(135deg, #010101 0%, #121212 40%, #1a1a1a 70%, #222222 100%);
+        }
+        .hero-section > div {
+            position: relative;
+            color: white;
+            z-index: 10;
+        }
+    </style>
 </head>
 <body class="font-sans bg-light-bg text-dark-text">
 
-<header class="sticky top-0 z-50 bg-primary-dark text-white p-4 shadow-lg">
-    <div class="container mx-auto flex justify-between items-center">
+    <header class="sticky top-0 z-50 bg-primary-dark text-white p-4 shadow-lg">
+        <div class="container mx-auto flex justify-between items-center">
             <a href="index.html" class="text-3xl font-serif font-bold text-secondary-gold">TIP</a>
             <nav class="hidden md:flex space-x-6">
                 <a href="inovacoes.html?cat=inovacoes" class="hover:text-secondary-gold transition-colors">Inovações</a>
@@ -46,13 +102,10 @@
                 <a href="contato.html" class="hover:text-secondary-gold transition-colors">Contato</a>
             </nav>
             <div class="flex items-center space-x-4">
-            <input type="search" placeholder="Buscar..." class="p-2 rounded bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-secondary-gold">
-            <button id="menu-button" class="md:hidden text-white text-2xl">
-                <i class="fas fa-bars"></i>
-            </button> 
+                <input type="search" placeholder="Buscar..." class="p-2 rounded bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-secondary-gold">
+                <button class="md:hidden text-white text-2xl">&#9776;</button> </div>
         </div>
-    </div>
-</header>
+    </header>
 
     <main class="container mx-auto p-4 mt-8">
 
@@ -183,7 +236,7 @@
     &copy; <span id="current-year"></span> TIP. Todos os direitos reservados.
 </div>
     </footer>
+
     <script src="https://kit.fontawesome.com/your-font-awesome-kit-id.js" crossorigin="anonymous"></script>
-    <script src="script.js"></script>
 </body>
 </html>
