@@ -10,13 +10,15 @@
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <meta name="apple-mobile-web-app-title" content="Tip" />
     <link rel="manifest" href="/site.webmanifest" />
+    
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "WebSite",
-      "name": "A Crônica Diária",
+      "name": "TIP",
       "url": "https://www.seudominio.com",
       "potentialAction": {
         "@type": "SearchAction",
@@ -28,6 +30,7 @@
       }
     }
     </script>
+    
     <style>
         .font-serif {
             font-family: 'Playfair Display', serif;
@@ -44,17 +47,20 @@
         .bg-primary-dark {
             background-color: #181818;
         }
-        .text-secondary-gold {
-            color: #FFF; /* Alterado de #FFD700 para #FFF para o texto principal, ajustado onde necessário */
+        /* TIP: Links e texto principal no header usam text-white (#FFF) */
+        .text-secondary-gold { 
+            color: #FFF; 
         }
         .hover\:text-secondary-gold:hover {
             color: #FFD700;
         }
         .bg-secondary-gold {
-            background-color: #FFD700; /* Corrigido para ser #FFD700 conforme a paleta */
+            background-color: #FFD700;
         }
-        .hover\:bg-yellow-600:hover {
-            background-color: #0056b3; /* Mantido como estava */
+        /* Ajustando a cor do hover do botão para seguir o padrão de destaque dourado/amarelo */
+        .hero-section a:hover {
+            background-color: #FFD700; /* Dourado */
+            color: #181818; /* Cor escura do header */
         }
         .text-interactive-accent {
             color: #007BFF;
@@ -65,10 +71,13 @@
         .border-secondary-gold {
             border-color: #FFD700;
         }
+        
+        /* Estilos para a Seção Hero */
         .hero-section {
             background-size: cover;
             background-position: center;
             position: relative;
+            min-height: 400px;
         }
         .hero-section::before {
             content: '';
@@ -77,27 +86,35 @@
             right: 0;
             bottom: 0;
             left: 0;
-            background: linear-gradient(135deg, #010101 0%, #121212 40%, #1a1a1a 70%, #222222 100%);
+            /* Gradiente escuro para garantir contraste com o texto branco */
+            background: linear-gradient(180deg, rgba(24, 24, 24, 0.4) 0%, rgba(24, 24, 24, 0.8) 100%);
         }
         .hero-section > div {
             position: relative;
             color: white;
             z-index: 10;
         }
-        /* Estilo para o menu mobile aberto */
-        .mobile-menu-active {
-            display: flex; /* ou block, dependendo do layout desejado */
-            flex-direction: column;
+        
+        /* Estilos do Menu Mobile */
+        #mobile-menu {
+            max-height: calc(100vh - 64px); /* Altura da tela menos o cabeçalho (aprox. 64px) */
+            overflow-y: auto;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background-color: #181818;
+            padding: 1rem;
+            z-index: 40;
         }
     </style>
 </head>
 <body class="font-sans bg-light-bg text-dark-text">
 
     <header class="sticky top-0 z-50 bg-primary-dark text-white p-4 shadow-lg">
-        <div class="container mx-auto flex justify-between items-center">
-            <a href="index.html" class="text-3xl font-serif font-bold text-secondary-gold">TIP</a>
+        <div class="container mx-auto flex justify-between items-center relative">
+            <a href="index.html" class="text-3xl font-serif font-bold text-white">TIP</a>
             
-            <!-- Menu de navegação desktop -->
             <nav class="hidden md:flex space-x-6">
                 <a href="inovacoes.html?cat=inovacoes" class="hover:text-secondary-gold transition-colors">Inovações</a>
                 <a href="economia-do-bem.html?cat=economia-do-bem" class="hover:text-secondary-gold transition-colors">Economia do Bem</a>
@@ -110,57 +127,56 @@
             </nav>
             
             <div class="flex items-center space-x-4">
-                <!-- Campo de busca visível apenas em desktop -->
-                <input type="search" placeholder="Buscar..." class="hidden md:block p-2 rounded bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-secondary-gold">
+                <input type="search" placeholder="Buscar..." class="hidden md:block p-2 rounded bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-secondary-gold w-40">
                 
-                <!-- Botão do menu hambúrguer visível apenas em mobile -->
-                <button id="mobile-menu-button" class="md:hidden text-white text-2xl focus:outline-none">
-                    &#9776; <!-- Ícone de hambúrguer -->
-                </button>
+                <button id="mobile-menu-button" class="md:hidden text-white text-2xl p-1 focus:outline-none focus:ring-2 focus:ring-secondary-gold rounded">
+                    &#9776; </button>
             </div>
         </div>
 
-        <!-- Menu mobile (oculto por padrão, visível com JS) -->
-        <nav id="mobile-menu" class="hidden md:hidden flex-col space-y-2 mt-4 px-2">
-            <input type="search" placeholder="Buscar..." class="p-2 rounded bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-secondary-gold w-full">
+        <nav id="mobile-menu" class="hidden md:hidden flex-col space-y-2">
+            <input type="search" placeholder="Buscar..." class="w-full p-2 mb-4 rounded bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-secondary-gold">
+
             <a href="inovacoes.html?cat=inovacoes" class="block p-2 hover:bg-gray-700 rounded transition-colors">Inovações</a>
             <a href="economia-do-bem.html?cat=economia-do-bem" class="block p-2 hover:bg-gray-700 rounded transition-colors">Economia do Bem</a>
             <a href="saude-bem-estar.html?cat=saude-bem-estar" class="block p-2 hover:bg-gray-700 rounded transition-colors">Saúde & Bem-estar</a>
             <a href="meio-ambiente.html?cat=meio-ambiente" class="block p-2 hover:bg-gray-700 rounded transition-colors">Meio Ambiente</a>
             <a href="historias-inspiradoras.html?cat=historias-inspiradoras" class="block p-2 hover:bg-gray-700 rounded transition-colors">Histórias Inspiradoras</a>
             <a href="mundo-melhor.html?cat=mundo-melhor" class="block p-2 hover:bg-gray-700 rounded transition-colors">Mundo Melhor</a>
-            <a href="sobre.html" class="block p-2 hover:bg-gray-700 rounded transition-colors">Sobre Nós</a>
+            <a href="sobre.html" class="block p-2 hover:bg-gray-700 rounded transition-colors border-t border-gray-700 mt-2 pt-2">Sobre Nós</a>
             <a href="contato.html" class="block p-2 hover:bg-gray-700 rounded transition-colors">Contato</a>
         </nav>
     </header>
 
     <main class="container mx-auto p-4 mt-8">
 
-        <section class="hero-section rounded-lg overflow-hidden mb-12 shadow-xl"
-                        style="background-image: url('./public/img/hero-bg.jpg'); min-height: 400px; display: flex; align-items: flex-end;">
+        <section class="hero-section rounded-lg overflow-hidden mb-12 shadow-xl flex items-end"
+                         style="background-image: url('./public/img/hero-bg.jpg');">
             <div class="p-8 pb-12 w-full md:w-2/3">
-                <span class="text-sm font-semibold text-interactive-accent uppercase">Seja bem-vindo(a)</span>
-                <h1 class="text-3xl md:text-6xl font-serif font-bold leading-tight mt-2">O mundo está cheio de notícias que merecem ser celebradas. Fique por perto.</h1>
-                <p class="text-lg mt-4 max-w-2xl">Estamos preparando um espaço para te conectar com o melhor que acontece no planeta. Em breve, a sua dose diária de inspiração.</p>
-                <a href="noticia.html?id=1" class="inline-block mt-6 px-6 py-3 bg-[#171717] text-white font-semibold rounded-full hover:bg-white hover:text-black transition-colors">Leia Mais</a>
+                <span class="text-sm font-semibold text-secondary-gold uppercase border-b border-secondary-gold pb-1 inline-block">Destaque</span>
+                <h1 class="text-4xl sm:text-5xl md:text-6xl font-serif font-bold leading-tight mt-2">O mundo está cheio de notícias que merecem ser celebradas. Fique por perto.</h1>
+                <p class="text-base md:text-lg mt-4 max-w-2xl">Estamos preparando um espaço para te conectar com o melhor que acontece no planeta. Em breve, a sua dose diária de inspiração.</p>
+                <a href="noticia.html?id=1" class="inline-block mt-6 px-6 py-3 bg-secondary-gold text-primary-dark font-semibold rounded-full transition-colors shadow-lg">
+                    Leia a Notícia em Destaque
+                </a>
             </div>
         </section>
         
         <section class="mb-12">
-            <h2 class="text-4xl font-serif font-bold mb-8 border-b-2 border-secondary-gold pb-2">Últimas Notícias</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <h2 class="text-3xl md:text-4xl font-serif font-bold mb-8 border-b-2 border-secondary-gold pb-2">Últimas Notícias</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                 <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300">
-                    <img src="doador-sangue.webp" alt="Doador de sangue espontâneo no Hemocentro de Belo Horizonte" class="w-full h-50 object-cover">
+                    <img src="doador-sangue.webp" alt="Doador de sangue espontâneo no Hemocentro de Belo Horizonte" class="w-full h-48 object-cover">
                     <div class="p-4">
-                        <span class="text-xs font-semibold text-gray-500 uppercase">Solidariedade</span>
+                        <span class="text-xs font-semibold text-interactive-accent uppercase">Solidariedade</span>
                         <h3 class="text-xl font-serif font-bold mt-2 leading-tight"><a href="noticia.html?id=2" class="hover:text-interactive-accent">Doe Sangue, Salve Vidas</a></h3>
-                        <p class="text-gray-700 mt-2 text-sm"> Cada doação pode fazer a diferença na vida de alguém. Participe dessa corrente de solidariedade.</p>
+                        <p class="text-gray-700 mt-2 text-sm">Cada doação pode fazer a diferença na vida de alguém. Participe dessa corrente de solidariedade.</p>
                     </div>
                 </div>
                 <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300">
                     <img src="./public/img/news2.jpg" alt="Mercado de Cripto" class="w-full h-48 object-cover">
                     <div class="p-4">
-                        <span class="text-xs font-semibold text-gray-500 uppercase">Economia</span>
+                        <span class="text-xs font-semibold text-interactive-accent uppercase">Economia do Bem</span>
                         <h3 class="text-xl font-serif font-bold mt-2 leading-tight"><a href="noticia.html?id=3" class="hover:text-interactive-accent">Mercado de Cripto: Análise dos Movimentos Recentes</a></h3>
                         <p class="text-gray-700 mt-2 text-sm">Volatilidade continua, mas novos investimentos indicam otimismo.</p>
                     </div>
@@ -168,7 +184,7 @@
                 <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300">
                     <img src="./public/img/news3.jpg" alt="Cultura Pop Asiática" class="w-full h-48 object-cover">
                     <div class="p-4">
-                        <span class="text-xs font-semibold text-gray-500 uppercase">Cultura</span>
+                        <span class="text-xs font-semibold text-interactive-accent uppercase">Cultura & Bem-estar</span>
                         <h3 class="text-xl font-serif font-bold mt-2 leading-tight"><a href="noticia.html?id=4" class="hover:text-interactive-accent">O Crescimento Fenomenal da Cultura Pop Asiática</a></h3>
                         <p class="text-gray-700 mt-2 text-sm">K-Pop, animes e dramas conquistam o ocidente.</p>
                     </div>
@@ -176,7 +192,7 @@
                 <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300">
                     <img src="./public/img/news4.jpg" alt="Esportes Olímpicos" class="w-full h-48 object-cover">
                     <div class="p-4">
-                        <span class="text-xs font-semibold text-gray-500 uppercase">Esportes</span>
+                        <span class="text-xs font-semibold text-interactive-accent uppercase">Mundo Melhor</span>
                         <h3 class="text-xl font-serif font-bold mt-2 leading-tight"><a href="noticia.html?id=5" class="hover:text-interactive-accent">Preparativos Finais para os Próximos Jogos Olímpicos</a></h3>
                         <p class="text-gray-700 mt-2 text-sm">Atletas e cidades-sede correm contra o tempo.</p>
                     </div>
@@ -185,11 +201,12 @@
         </section>
 
         <section class="mb-12">
-            <h2 class="text-4xl font-serif font-bold mb-8 border-b-2 border-secondary-gold pb-2">Histórias Inspiradoras</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <h2 class="text-3xl md:text-4xl font-serif font-bold mb-8 border-b-2 border-secondary-gold pb-2">Histórias Inspiradoras</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300">
                     <img src="./public/img/politica1.jpg" alt="Eleições" class="w-full h-48 object-cover">
                     <div class="p-4">
+                        <span class="text-xs font-semibold text-interactive-accent uppercase">Política & Sociedade</span>
                         <h3 class="text-xl font-serif font-bold mt-2 leading-tight"><a href="noticia.html?id=6" class="hover:text-interactive-accent">Tensão nas Eleições: Candidatos Apresentam Propostas Finais</a></h3>
                         <p class="text-gray-700 mt-2 text-sm">A reta final da campanha eleitoral promete debates acalorados e reviravoltas.</p>
                     </div>
@@ -197,6 +214,7 @@
                 <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300">
                     <img src="./public/img/politica2.jpg" alt="Cúpula do Clima" class="w-full h-48 object-cover">
                     <div class="p-4">
+                        <span class="text-xs font-semibold text-interactive-accent uppercase">Meio Ambiente</span>
                         <h3 class="text-xl font-serif font-bold mt-2 leading-tight"><a href="noticia.html?id=7" class="hover:text-interactive-accent">Cúpula do Clima Busca Acordos Urgentes contra o Aquecimento Global</a></h3>
                         <p class="text-gray-700 mt-2 text-sm">Líderes mundiais se reúnem para discutir metas ambiciosas.</p>
                     </div>
@@ -204,6 +222,7 @@
                 <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300">
                     <img src="./public/img/politica3.jpg" alt="Reforma Tributária" class="w-full h-48 object-cover">
                     <div class="p-4">
+                        <span class="text-xs font-semibold text-interactive-accent uppercase">Economia</span>
                         <h3 class="text-xl font-serif font-bold mt-2 leading-tight"><a href="noticia.html?id=8" class="hover:text-interactive-accent">Reforma Tributária: Pontos Chave e Impacto na Economia</a></h3>
                         <p class="text-gray-700 mt-2 text-sm">Entenda as mudanças propostas e o que elas significam para você.</p>
                     </div>
@@ -212,11 +231,12 @@
         </section>
 
         <section class="mb-12">
-            <h2 class="text-4xl font-serif font-bold mb-8 border-b-2 border-secondary-gold pb-2">Mundo Melhor</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <h2 class="text-3xl md:text-4xl font-serif font-bold mb-8 border-b-2 border-secondary-gold pb-2">Mundo Melhor</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300">
                     <img src="./public/img/tech1.jpg" alt="Inteligência Artificial" class="w-full h-48 object-cover">
                     <div class="p-4">
+                        <span class="text-xs font-semibold text-interactive-accent uppercase">Inovações</span>
                         <h3 class="text-xl font-serif font-bold mt-2 leading-tight"><a href="noticia.html?id=9" class="hover:text-interactive-accent">O Futuro da Inteligência Artificial: Desafios e Oportunidades</a></h3>
                         <p class="text-gray-700 mt-2 text-sm">Explorando os limites da IA e seu impacto na sociedade.</p>
                     </div>
@@ -224,6 +244,7 @@
                 <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300">
                     <img src="./public/img/tech2.jpg" alt="Realidade Virtual" class="w-full h-48 object-cover">
                     <div class="p-4">
+                        <span class="text-xs font-semibold text-interactive-accent uppercase">Inovações</span>
                         <h3 class="text-xl font-serif font-bold mt-2 leading-tight"><a href="noticia.html?id=10" class="hover:text-interactive-accent">Realidade Virtual e Aumentada: A Próxima Fronteira da Interação</a></h3>
                         <p class="text-gray-700 mt-2 text-sm">Como VR/AR estão moldando novas experiências.</p>
                     </div>
@@ -231,6 +252,7 @@
                 <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300">
                     <img src="./public/img/tech3.jpg" alt="Cibersegurança" class="w-full h-48 object-cover">
                     <div class="p-4">
+                        <span class="text-xs font-semibold text-interactive-accent uppercase">Segurança</span>
                         <h3 class="text-xl font-serif font-bold mt-2 leading-tight"><a href="noticia.html?id=11" class="hover:text-interactive-accent">Cibersegurança: Protegendo Seus Dados em um Mundo Conectado</a></h3>
                         <p class="text-gray-700 mt-2 text-sm">Dicas e tendências para manter sua segurança digital.</p>
                     </div>
@@ -242,21 +264,21 @@
 
     <footer class="bg-primary-dark text-white p-8 mt-12">
         <div class="container mx-auto text-center md:flex md:justify-between md:items-center">
-            <div class="mb-4 md:mb-0">
-                <h3 class="text-2xl font-serif font-bold text-secondary-gold">TIP</h3>
+            <div class="mb-6 md:mb-0 text-center md:text-left">
+                <h3 class="text-2xl font-serif font-bold text-center" style="color:#fff;">TIP</h3> 
                 <p class="text-sm mt-2">Boas notícias para tempos urgentes.</p>
             </div>
-            <nav class="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-6 text-sm">
+            <nav class="flex flex-col space-y-2 text-sm mb-6 md:mb-0 md:flex-row md:space-y-0 md:space-x-6 text-center">
                 <a href="#" class="hover:text-secondary-gold transition-colors">Política de Privacidade</a>
                 <a href="#" class="hover:text-secondary-gold transition-colors">Termos de Uso</a>
                 <a href="#" class="hover:text-secondary-gold transition-colors">Trabalhe Conosco</a>
                 <a href="#" class="hover:text-secondary-gold transition-colors">Anuncie</a>
             </nav>
-            <div class="mt-4 md:mt-0 text-lg">
-                <a href="#" class="mx-2 hover:text-secondary-gold transition-colors"><i class="fab fa-facebook-f"></i></a>
-                <a href="#" class="mx-2 hover:text-secondary-gold transition-colors"><i class="fab fa-twitter"></i></a>
-                <a href="#" class="mx-2 hover:text-secondary-gold transition-colors"><i class="fab fa-instagram"></i></a>
-                <a href="#" class="mx-2 hover:text-secondary-gold transition-colors"><i class="fab fa-linkedin-in"></i></a>
+            <div class="mt-4 md:mt-0 text-lg flex justify-center space-x-4">
+                <a href="#" class="hover:text-secondary-gold transition-colors"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="hover:text-secondary-gold transition-colors"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="hover:text-secondary-gold transition-colors"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="hover:text-secondary-gold transition-colors"><i class="fab fa-linkedin-in"></i></a>
             </div>
         </div>
         <div class="text-center text-sm mt-8 opacity-75">
@@ -264,7 +286,6 @@
         </div>
     </footer>
 
-    <!-- Script para o menu hambúrguer e ano atual -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const mobileMenuButton = document.getElementById('mobile-menu-button');
