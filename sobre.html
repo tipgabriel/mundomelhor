@@ -14,8 +14,9 @@
         .bg-primary-dark {
             background-color: #181818; /* Cor escura do cabeçalho */
         }
+        /* Cor dos links de navegação: Branco (#FFF) */
         .text-secondary-gold {
-            color: #FFF; /* Cor principal de destaque no cabeçalho */
+            color: #FFF; 
         }
         .hover\:text-secondary-gold:hover { color: #FFD700; }
         .bg-secondary-gold { background-color: #FFD700; }
@@ -23,13 +24,20 @@
         .text-interactive-accent { color: #007BFF; }
         .hover\:text-interactive-accent:hover { color: #0056b3; }
         .border-secondary-gold { border-color: #FFD700; }
+
+        /* Estilo para garantir que o menu mobile preencha a largura e tenha scroll se necessário */
+        #mobile-menu {
+            max-height: calc(100vh - 64px); /* Altura da tela menos o cabeçalho (aprox. 64px) */
+            overflow-y: auto;
+        }
     </style>
 </head>
 <body class="font-sans bg-light-bg text-dark-text">
 
     <header class="sticky top-0 z-50 bg-primary-dark text-white p-4 shadow-lg">
-        <div class="container mx-auto flex justify-between items-center">
-            <a href="index.html" class="text-3xl font-serif font-bold text-secondary-gold">TIP</a>
+        <div class="container mx-auto flex justify-between items-center relative">
+            <a href="index.html" class="text-3xl font-serif font-bold text-white">TIP</a>
+            
             <nav class="hidden md:flex space-x-6">
                 <a href="inovacoes.html?cat=inovacoes" class="hover:text-secondary-gold transition-colors">Inovações</a>
                 <a href="economia-do-bem.html?cat=economia-do-bem" class="hover:text-secondary-gold transition-colors">Economia do Bem</a>
@@ -40,46 +48,66 @@
                 <a href="sobre.html" class="text-secondary-gold transition-colors border-b-2 border-secondary-gold">Sobre Nós</a>
                 <a href="contato.html" class="hover:text-secondary-gold transition-colors">Contato</a>
             </nav>
+            
             <div class="flex items-center space-x-4">
-                <input type="search" placeholder="Buscar..." class="p-2 rounded bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-secondary-gold">
-                <button class="md:hidden text-white text-2xl">&#9776;</button>
+                <input type="search" placeholder="Buscar..." class="hidden md:block p-2 rounded bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-secondary-gold w-40">
+                
+                <button id="mobile-menu-button" class="md:hidden text-white text-2xl p-1 focus:outline-none focus:ring-2 focus:ring-secondary-gold rounded">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                    </svg>
+                </button>
             </div>
         </div>
+
+        <nav id="mobile-menu" class="hidden md:hidden absolute inset-x-0 top-full bg-primary-dark shadow-xl p-4 border-t border-gray-700">
+            <input type="search" placeholder="Buscar..." class="w-full p-2 mb-4 rounded bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-secondary-gold">
+
+            <a href="inovacoes.html?cat=inovacoes" class="block py-2 hover:text-secondary-gold transition-colors">Inovações</a>
+            <a href="economia-do-bem.html?cat=economia-do-bem" class="block py-2 hover:text-secondary-gold transition-colors">Economia do Bem</a>
+            <a href="saude-bem-estar.html?cat=saude-bem-estar" class="block py-2 hover:text-secondary-gold transition-colors">Saúde & Bem-estar</a>
+            <a href="meio-ambiente.html?cat=meio-ambiente" class="block py-2 hover:text-secondary-gold transition-colors">Meio Ambiente</a>
+            <a href="historias-inspiradoras.html?cat=historias-inspiradoras" class="block py-2 hover:text-secondary-gold transition-colors">Histórias Inspiradoras</a>
+            <a href="mundo-melhor.html?cat=mundo-melhor" class="block py-2 hover:text-secondary-gold transition-colors">Mundo Melhor</a>
+            <a href="sobre.html" class="block py-2 text-secondary-gold transition-colors border-l-4 pl-2 border-secondary-gold">Sobre Nós</a>
+            <a href="contato.html" class="block py-2 hover:text-secondary-gold transition-colors">Contato</a>
+        </nav>
+
     </header>
 
     <main class="container mx-auto p-4 mt-8">
-        <h1 class="text-5xl font-serif font-bold mb-8 border-b-2 border-secondary-gold pb-2">Nossa Missão Jornalística</h1>
+        <h1 class="text-4xl md:text-5xl font-serif font-bold mb-8 border-b-2 border-secondary-gold pb-2">Nossa Missão Jornalística</h1>
         
-        <div class="bg-white rounded-lg shadow-xl p-8 md:p-12 max-w-4xl mx-auto">
+        <div class="bg-white rounded-lg shadow-xl p-6 md:p-12 max-w-4xl mx-auto">
 
             <section class="mb-10">
-                <h2 class="text-3xl font-serif font-bold text-primary-dark mb-4">TIP: Jornalismo de Boas Notícias e Progresso</h2>
-                <p class="text-lg text-gray-700 mb-4 leading-relaxed">
-                    A TIP nasce para mostrar o lado positivo do mundo. Aqui, nosso foco está nas soluções, inovações e histórias que inspiram mudanças. Entregamos conteúdo rigoroso, imparcial e motivador, que informa e capacita nossos leitores a fazer a diferença.
+                <h2 class="text-2xl md:text-3xl font-serif font-bold text-primary-dark mb-4">TIP: Jornalismo de Boas Notícias e Progresso</h2>
+                <p class="text-base md:text-lg text-gray-700 mb-4 leading-relaxed">
+                    A **TIP** nasce para mostrar o lado positivo do mundo. Aqui, nosso foco está nas **soluções, inovações** e **histórias que inspiram mudanças**. Entregamos conteúdo rigoroso, imparcial e motivador, que informa e capacita nossos leitores a fazer a diferença.
                 </p>
-                <p class="text-lg text-gray-700 leading-relaxed italic border-l-4 border-secondary-gold pl-4">
+                <p class="text-base md:text-lg text-gray-700 leading-relaxed italic border-l-4 border-secondary-gold pl-4">
                     "Em um mundo cheio de desafios, a informação que inspira é a nossa maior força."
                 </p>
             </section>
 
             <section class="mt-12 pt-8 border-t border-gray-200">
-                <h2 class="text-3xl font-serif font-bold text-primary-dark mb-6">Conheça o Editor-Chefe</h2>
+                <h2 class="text-2xl md:text-3xl font-serif font-bold text-primary-dark mb-6">Conheça o Editor-Chefe</h2>
                 
                 <div class="md:flex md:space-x-8 items-start">
-<div class="flex-shrink-0 mb-6 md:mb-0">
-  <img src="eu.jpeg" alt="Foto do Editor-Chefe" 
-       class="w-40 h-40 object-cover rounded-full border-2 border-[#ffd900] shadow-sm mx-auto md:mx-0">
-</div>
+                    <div class="flex-shrink-0 mb-6 md:mb-0 text-center">
+                        <img src="eu.jpeg" alt="Foto do Editor-Chefe" 
+                            class="w-32 h-32 md:w-40 md:h-40 object-cover rounded-full border-2 border-[#ffd900] shadow-md mx-auto">
+                    </div>
                     
-                    <div class="md:flex-grow prose max-w-none">
-                        <h3 class="text-2xl font-serif font-bold mb-2">Gabriel da Paz</h3>
-                        <p class="text-interactive-accent font-semibold mb-4">Editor Chefe | Fundador da TIP</p>
+                    <div class="md:flex-grow prose max-w-none text-center md:text-left">
+                        <h3 class="text-xl md:text-2xl font-serif font-bold mb-2">Gabriel da Paz</h3>
+                        <p class="text-interactive-accent font-semibold mb-4 text-base">Editor Chefe | Fundador da TIP</p>
                         
-                        <p class="text-gray-800 mb-4">
-A TIP nasceu para mostrar o lado positivo do mundo. Aqui, cada história inspira, cada solução transforma e cada inovação gera impacto real. Nosso conteúdo é produzido com rigor, clareza e relevância, garantindo que os leitores recebam não só a notícia, mas também contexto e perspectiva, construindo uma visão informada e otimista do mundo.
+                        <p class="text-gray-800 mb-4 text-base">
+                            A TIP nasceu para mostrar o lado positivo do mundo. Aqui, cada história inspira, cada solução transforma e cada inovação gera impacto real. Nosso conteúdo é produzido com rigor, clareza e relevância, garantindo que os leitores recebam não só a notícia, mas também contexto e perspectiva, construindo uma visão informada e otimista do mundo.
                         </p>
-                        <p class="text-gray-800 mb-4">
-Com a TIP, informar e inspirar andam juntos — cada notícia boa é um passo concreto para um futuro melhor.
+                        <p class="text-gray-800 mb-4 text-base">
+                            Com a TIP, informar e inspirar andam juntos — cada notícia boa é um passo concreto para um futuro melhor.
                         </p>
                         
                         <div class="mt-4 text-xl space-x-4">
@@ -94,21 +122,21 @@ Com a TIP, informar e inspirar andam juntos — cada notícia boa é um passo co
 
     <footer class="bg-primary-dark text-white p-8 mt-12">
         <div class="container mx-auto text-center md:flex md:justify-between md:items-center">
-            <div class="mb-4 md:mb-0">
-                <h3 class="text-2xl font-serif font-bold text-secondary-gold">TIP</h3>
+            <div class="mb-6 md:mb-0 text-center md:text-left">
+                <h3 class="text-2xl font-serif font-bold text-secondary-gold">TIP</h3> 
                 <p class="text-sm mt-2">Boas notícias para tempos urgentes.</p>
             </div>
-            <nav class="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-6 text-sm">
+            <nav class="flex flex-col space-y-2 text-sm mb-6 md:mb-0 md:flex-row md:space-y-0 md:space-x-6 text-center">
                 <a href="#" class="hover:text-secondary-gold transition-colors">Política de Privacidade</a>
                 <a href="#" class="hover:text-secondary-gold transition-colors">Termos de Uso</a>
                 <a href="#" class="hover:text-secondary-gold transition-colors">Trabalhe Conosco</a>
                 <a href="#" class="hover:text-secondary-gold transition-colors">Anuncie</a>
             </nav>
-            <div class="mt-4 md:mt-0 text-lg">
-                <a href="#" class="mx-2 hover:text-secondary-gold transition-colors"><i class="fab fa-facebook-f"></i></a>
-                <a href="#" class="mx-2 hover:text-secondary-gold transition-colors"><i class="fab fa-twitter"></i></a>
-                <a href="#" class="mx-2 hover:text-secondary-gold transition-colors"><i class="fab fa-instagram"></i></a>
-                <a href="#" class="mx-2 hover:text-secondary-gold transition-colors"><i class="fab fa-linkedin-in"></i></a>
+            <div class="mt-4 md:mt-0 text-lg flex justify-center space-x-4">
+                <a href="#" class="hover:text-secondary-gold transition-colors"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="hover:text-secondary-gold transition-colors"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="hover:text-secondary-gold transition-colors"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="hover:text-secondary-gold transition-colors"><i class="fab fa-linkedin-in"></i></a>
             </div>
         </div>
         <div class="text-center text-sm mt-8 opacity-75">
@@ -116,6 +144,25 @@ Com a TIP, informar e inspirar andam juntos — cada notícia boa é um passo co
         </div>
     </footer>
 
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const menuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            if (menuButton && mobileMenu) {
+                menuButton.addEventListener('click', () => {
+                    mobileMenu.classList.toggle('hidden');
+                });
+            }
+
+            // Atualiza o ano no rodapé
+            const currentYearSpan = document.getElementById('current-year');
+            if (currentYearSpan) {
+                currentYearSpan.textContent = new Date().getFullYear();
+            }
+        });
+    </script>
+    
     <script src="./public/js/main.js"></script>
     <script src="https://kit.fontawesome.com/your-font-awesome-kit-id.js" crossorigin="anonymous"></script>
 </body>
