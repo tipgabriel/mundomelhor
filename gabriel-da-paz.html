@@ -12,30 +12,49 @@
         .text-dark-text { color: #333333; }
         .bg-light-bg { background-color: #F4F4F4; }
         .bg-primary-dark { background-color: #181818; }
-        .text-secondary-gold { color: #FFF; } /* Mantido como #FFF para o texto principal, ajustado onde necessário */
+        /* Cor dos links de navegação: Branco (#FFF) */
+        .text-secondary-gold { color: #FFF; } 
         .hover\:text-secondary-gold:hover { color: #FFD700; }
         .bg-secondary-gold { background-color: #FFD700; }
         .hover\:bg-yellow-600:hover { background-color: #C5A000; }
         .text-interactive-accent { color: #007BFF; }
         .hover\:text-interactive-accent:hover { color: #0056b3; }
         .border-secondary-gold { border-color: #FFD700; }
-        /* Estilos adicionais para o corpo do artigo */
+        
+        /* Estilos adicionais para o corpo do artigo - Ajustes para melhor legibilidade */
         .prose p { margin-bottom: 1.5rem; }
-        .prose h2 { margin-top: 2.5rem; margin-bottom: 1rem; }
-        /* Estilo para o menu mobile aberto */
-        .mobile-menu-active {
-            display: flex; /* ou block, dependendo do layout desejado */
-            flex-direction: column;
+        .prose h2 { 
+            margin-top: 2.5rem; 
+            margin-bottom: 1rem; 
+            font-size: 1.75rem; /* text-2xl no mobile e sm/md */
+        }
+        @media (min-width: 768px) {
+            .prose h2 {
+                font-size: 2rem; /* text-3xl no desktop */
+            }
+        }
+
+        /* Estilo para garantir que o menu mobile preencha a largura e tenha scroll se necessário */
+        #mobile-menu {
+            max-height: calc(100vh - 64px); /* Altura da tela menos o cabeçalho (aprox. 64px) */
+            overflow-y: auto;
+            /* Garante que o menu ocupe a largura total e fique abaixo do cabeçalho */
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background-color: #181818;
+            padding: 1rem;
+            z-index: 40;
         }
     </style>
 </head>
 <body class="font-sans bg-light-bg text-dark-text">
 
     <header class="sticky top-0 z-50 bg-primary-dark text-white p-4 shadow-lg">
-        <div class="container mx-auto flex justify-between items-center">
-            <a href="index.html" class="text-3xl font-serif font-bold text-secondary-gold">TIP</a>
+        <div class="container mx-auto flex justify-between items-center relative">
+            <a href="index.html" class="text-3xl font-serif font-bold text-white">TIP</a>
             
-            <!-- Menu de navegação desktop -->
             <nav class="hidden md:flex space-x-6">
                 <a href="inovacoes.html?cat=inovacoes" class="hover:text-secondary-gold transition-colors">Inovações</a>
                 <a href="economia-do-bem.html?cat=economia-do-bem" class="hover:text-secondary-gold transition-colors">Economia do Bem</a>
@@ -48,26 +67,23 @@
             </nav>
             
             <div class="flex items-center space-x-4">
-                <!-- Campo de busca visível apenas em desktop -->
-                <input type="search" placeholder="Buscar..." class="hidden md:block p-2 rounded bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-secondary-gold">
+                <input type="search" placeholder="Buscar..." class="hidden md:block p-2 rounded bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-secondary-gold w-40">
                 
-                <!-- Botão do menu hambúrguer visível apenas em mobile -->
-                <button id="mobile-menu-button" class="md:hidden text-white text-2xl focus:outline-none">
-                    &#9776; <!-- Ícone de hambúrguer -->
-                </button>
+                <button id="mobile-menu-button" class="md:hidden text-white text-2xl p-1 focus:outline-none focus:ring-2 focus:ring-secondary-gold rounded">
+                    &#9776; </button>
             </div>
         </div>
 
-        <!-- Menu mobile (oculto por padrão, visível com JS) -->
-        <nav id="mobile-menu" class="hidden md:hidden flex-col space-y-2 mt-4 px-2">
-            <input type="search" placeholder="Buscar..." class="p-2 rounded bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-secondary-gold w-full">
+        <nav id="mobile-menu" class="hidden md:hidden flex-col space-y-2">
+            <input type="search" placeholder="Buscar..." class="w-full p-2 mb-4 rounded bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-secondary-gold">
+
             <a href="inovacoes.html?cat=inovacoes" class="block p-2 hover:bg-gray-700 rounded transition-colors">Inovações</a>
             <a href="economia-do-bem.html?cat=economia-do-bem" class="block p-2 hover:bg-gray-700 rounded transition-colors">Economia do Bem</a>
             <a href="saude-bem-estar.html?cat=saude-bem-estar" class="block p-2 hover:bg-gray-700 rounded transition-colors">Saúde & Bem-estar</a>
             <a href="meio-ambiente.html?cat=meio-ambiente" class="block p-2 hover:bg-gray-700 rounded transition-colors">Meio Ambiente</a>
-            <a href="historias-inspiradoras.html?cat=historias-inspiradoras" class="block p-2 text-secondary-gold border-b-2 border-secondary-gold hover:bg-gray-700 rounded transition-colors">Histórias Inspiradoras</a>
+            <a href="historias-inspiradoras.html?cat=historias-inspiradoras" class="block p-2 text-secondary-gold border-l-4 pl-2 border-secondary-gold rounded transition-colors">Histórias Inspiradoras</a>
             <a href="mundo-melhor.html?cat=mundo-melhor" class="block p-2 hover:bg-gray-700 rounded transition-colors">Mundo Melhor</a>
-            <a href="sobre.html" class="block p-2 hover:bg-gray-700 rounded transition-colors">Sobre Nós</a>
+            <a href="sobre.html" class="block p-2 hover:bg-gray-700 rounded transition-colors border-t border-gray-700 mt-2 pt-2">Sobre Nós</a>
             <a href="contato.html" class="block p-2 hover:bg-gray-700 rounded transition-colors">Contato</a>
         </nav>
     </header>
@@ -75,27 +91,27 @@
     <main class="container mx-auto p-4 mt-8">
         <article class="bg-white rounded-lg shadow-lg p-6 md:p-12 max-w-4xl mx-auto">
             <span class="text-sm font-semibold text-interactive-accent uppercase">História Pessoal | Resiliência</span>
-            <h1 class="text-3xl md:text-3xl font-serif font-bold leading-tight mt-2 mb-4">A Trajetória de Luta e Superação: Uma Vida Marcada pela União Familiar</h1>
-            <div class="flex items-center text-gray-600 text-sm mb-6 flex-wrap"> <!-- Adicionado flex-wrap para melhor adaptação em mobile -->
+            <h1 class="text-3xl md:text-4xl font-serif font-bold leading-tight mt-2 mb-4">A Trajetória de Luta e Superação: Uma Vida Marcada pela União Familiar</h1>
+            
+            <div class="flex items-center text-gray-600 text-sm mb-6 flex-wrap">
                 <span>Por <a href="sobre.html" class="font-bold hover:underline">O Autor</a></span>
                 <span class="mx-2">•</span>
                 <span>26 de Setembro de 2025</span>
             </div>
 
-            <img src="tip-raiz.png" alt="Representação da minha história em arte" class="max-w-full h-auto rounded-lg mb-8 shadow-md mx-auto"> <!-- max-w-full para garantir que a imagem não ultrapasse o contêiner -->
+            <img src="tip-raiz.png" alt="Representação da minha história em arte" class="max-w-full h-auto rounded-lg mb-8 shadow-md mx-auto">
 
-            <div class="prose max-w-none text-lg leading-relaxed">
-             <h2 class="text-3xl font-serif font-bold mt-8 mb-4">Uma vida marcada pela luta e superação</h2>
+            <div class="prose max-w-none text-base md:text-lg leading-relaxed text-gray-800">
+                <h2 class="font-serif font-bold">Uma vida marcada pela luta e superação</h2>
                 <p>Nasci em 2001, no Hospital da Baleia, em Belo Horizonte (MG). Minha infância foi tudo, menos fácil. Cresci ao lado dos meus irmãos — Jéssica, Paloma e Brandino — e da minha mãe, Maria José dos Santos. Meu pai, Brandino da Paz, aparecia pouco, mas quando vinha era sempre festa: ele chegava com balas, surpresas e muita alegria.</p>
                 <p>Mesmo em meio às dificuldades, a infância foi cheia de memórias marcantes. Brincava na terra com carrinhos e outros brinquedos que comprava junto com meus irmãos. Muitas vezes, saíamos escondidos de madrugada para vender balas nas ruas e, com o dinheiro, íamos jogar na lan house. Eu sempre me destaquei pela facilidade em conquistar as pessoas com carisma e leveza — algo que até hoje carrego comigo.</p>
                 <p>Houve também momentos difíceis. Nossa mãe, muitas vezes, não apoiava os estudos e nos castigava severamente. Saíamos para vender balas às três da manhã, retornando apenas de madrugada para evitar broncas. Foram tempos duros, de castigos e violência, mas também de resiliência.</p>
 
-                <h2 class="text-3xl font-serif font-bold mt-8 mb-4">A Escolha do Laço Mais Forte</h2>
+                <h2 class="font-serif font-bold">A Escolha do Laço Mais Forte</h2>
                 <p>Certa vez, denúncias levaram o Juizado de Menores até nossa casa, no bairro Granja de Freitas. De lá, fomos levados a abrigos: eu para o Lar Marista e minhas irmãs para outro. Antes disso, já tínhamos vivido no Morro do Papagaio, numa casa de madeirite que desmoronou num dia de chuva, e até ficamos na rua até a prefeitura nos ceder moradia.</p>
-
                 <p>As ruas guardam muitas histórias. Lembro do atropelamento por um táxi, de fugirmos do “homem do saco preto”, e até de uma pedrada que levei na cabeça durante uma brincadeira — e que quase me deixou em desespero, até minha irmã Jéssica me socorrer. Apesar de tudo, a união entre nós era o que nos mantinha firmes.</p>
                 
-                <h2 class="text-3xl font-serif font-bold mt-8 mb-4">Transformando Dor em Base</h2>
+                <h2 class="font-serif font-bold">Transformando Dor em Base</h2>
                 <p>No abrigo, vivi dos 6 até os 17 anos. Passei por várias escolas — Emília Cerdeira, Dom Cabral, Lar dos Meninos, Ricardo Souza Cruz, Tomás Brandão e Olegário Maciel — até concluir os estudos pelo Encceja. Lá, conheci histórias que me inspiraram e me ensinaram muito sobre empatia, dor e esperança.</p>
                 <p>Um detalhe marcou minha vida: fui colocado na lista de adoção, e a própria madrinha se interessou. Mas decidi permanecer com minhas irmãs. Para mim, família sempre valeu mais que qualquer dinheiro.</p>
                 <p>Tenho um orgulho enorme da coragem das minhas irmãs. Com o esforço delas como jovens aprendizes, conseguiram juntar dinheiro e comprar uma casa na Pedreira Prado Lopes (PPL), que até hoje é nossa base.</p>
@@ -106,21 +122,21 @@
 
     <footer class="bg-primary-dark text-white p-8 mt-12">
         <div class="container mx-auto text-center md:flex md:justify-between md:items-center">
-            <div class="mb-4 md:mb-0">
-                <h3 class="text-2xl font-serif font-bold text-secondary-gold">TIP</h3>
+            <div class="mb-6 md:mb-0 text-center md:text-left">
+                <h3 class="text-2xl font-serif font-bold text-secondary-gold">TIP</h3> 
                 <p class="text-sm mt-2">Boas notícias para tempos urgentes.</p>
             </div>
-            <nav class="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-6 text-sm">
+            <nav class="flex flex-col space-y-2 text-sm mb-6 md:mb-0 md:flex-row md:space-y-0 md:space-x-6 text-center">
                 <a href="#" class="hover:text-secondary-gold transition-colors">Política de Privacidade</a>
                 <a href="#" class="hover:text-secondary-gold transition-colors">Termos de Uso</a>
                 <a href="#" class="hover:text-secondary-gold transition-colors">Trabalhe Conosco</a>
                 <a href="#" class="hover:text-secondary-gold transition-colors">Anuncie</a>
             </nav>
-            <div class="mt-4 md:mt-0 text-lg">
-                <a href="#" class="mx-2 hover:text-secondary-gold transition-colors"><i class="fab fa-facebook-f"></i></a>
-                <a href="#" class="mx-2 hover:text-secondary-gold transition-colors"><i class="fab fa-twitter"></i></a>
-                <a href="#" class="mx-2 hover:text-secondary-gold transition-colors"><i class="fab fa-instagram"></i></a>
-                <a href="#" class="mx-2 hover:text-secondary-gold transition-colors"><i class="fab fa-linkedin-in"></i></a>
+            <div class="mt-4 md:mt-0 text-lg flex justify-center space-x-4">
+                <a href="#" class="hover:text-secondary-gold transition-colors"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="hover:text-secondary-gold transition-colors"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="hover:text-secondary-gold transition-colors"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="hover:text-secondary-gold transition-colors"><i class="fab fa-linkedin-in"></i></a>
             </div>
         </div>
         <div class="text-center text-sm mt-8 opacity-75">
@@ -128,7 +144,6 @@
         </div>
     </footer>
 
-    <!-- Script para o menu hambúrguer e ano atual -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const mobileMenuButton = document.getElementById('mobile-menu-button');
