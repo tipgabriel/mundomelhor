@@ -47,9 +47,8 @@
         .bg-primary-dark {
             background-color: #181818;
         }
-        /* TIP: Links e texto principal no header usam text-white (#FFF) */
         .text-secondary-gold { 
-            color: #FFF; 
+            color: #FFF; /* Mantido em branco para o texto principal do header, conforme o padrão */
         }
         .hover\:text-secondary-gold:hover {
             color: #FFD700;
@@ -57,7 +56,6 @@
         .bg-secondary-gold {
             background-color: #FFD700;
         }
-        /* Ajustando a cor do hover do botão para seguir o padrão de destaque dourado/amarelo */
         .hero-section a:hover {
             background-color: #FFD700; /* Dourado */
             color: #181818; /* Cor escura do header */
@@ -95,17 +93,20 @@
             z-index: 10;
         }
         
-        /* Estilos do Menu Mobile */
+        /* Estilos do Menu Mobile (Implementação Responsiva) */
         #mobile-menu {
-            max-height: calc(100vh - 64px); /* Altura da tela menos o cabeçalho (aprox. 64px) */
-            overflow-y: auto;
             position: absolute;
-            top: 100%;
+            top: 100%; /* Inicia logo abaixo do header fixo */
             left: 0;
             right: 0;
-            background-color: #181818;
+            background-color: #181818; /* Cor de fundo definida por .bg-primary-dark */
             padding: 1rem;
-            z-index: 40;
+            z-index: 40; 
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+        /* Corrigindo o logo no header para ser branco e ter o hover dourado */
+        .header-logo {
+            color: #FFF;
         }
     </style>
 </head>
@@ -113,7 +114,7 @@
 
     <header class="sticky top-0 z-50 bg-primary-dark text-white p-4 shadow-lg">
         <div class="container mx-auto flex justify-between items-center relative">
-            <a href="index.html" class="text-3xl font-serif font-bold text-white">TIP</a>
+            <a href="index.html" class="text-3xl font-serif font-bold header-logo hover:text-secondary-gold transition-colors">TIP</a>
             
             <nav class="hidden md:flex space-x-6">
                 <a href="inovacoes.html?cat=inovacoes" class="hover:text-secondary-gold transition-colors">Inovações</a>
@@ -156,7 +157,7 @@
                 <span class="text-sm font-semibold text-secondary-gold uppercase border-b border-secondary-gold pb-1 inline-block">Destaque</span>
                 <h1 class="text-4xl sm:text-5xl md:text-6xl font-serif font-bold leading-tight mt-2">O mundo está cheio de notícias que merecem ser celebradas. Fique por perto.</h1>
                 <p class="text-base md:text-lg mt-4 max-w-2xl">Estamos preparando um espaço para te conectar com o melhor que acontece no planeta. Em breve, a sua dose diária de inspiração.</p>
-                <a href="noticia.html?id=1" class="inline-block mt-6 px-6 py-3 bg-secondary-gold text-primary-dark font-semibold rounded-full transition-colors shadow-lg">
+                <a href="noticia.html?id=1" class="inline-block mt-6 px-6 py-3 bg-secondary-gold text-primary-dark font-semibold rounded-full transition-colors shadow-lg hover:bg-[#171717] hover:text-white">
                     Leia a Notícia em Destaque
                 </a>
             </div>
@@ -265,7 +266,7 @@
     <footer class="bg-primary-dark text-white p-8 mt-12">
         <div class="container mx-auto text-center md:flex md:justify-between md:items-center">
             <div class="mb-6 md:mb-0 text-center md:text-left">
-                <h3 class="text-2xl font-serif font-bold text-center" style="color:#fff;">TIP</h3>
+                <h3 class="text-2xl font-serif font-bold header-logo hover:text-secondary-gold transition-colors">TIP</h3> 
                 <p class="text-sm mt-2">Boas notícias para tempos urgentes.</p>
             </div>
             <nav class="flex flex-col space-y-2 text-sm mb-6 md:mb-0 md:flex-row md:space-y-0 md:space-x-6 text-center">
@@ -293,8 +294,10 @@
 
             if (mobileMenuButton && mobileMenu) {
                 mobileMenuButton.addEventListener('click', function() {
+                    // Toggle da classe 'hidden' para mostrar/esconder
                     mobileMenu.classList.toggle('hidden');
-                    // Opcional: Altera o ícone do hambúrguer para um 'X'
+                    
+                    // Altera o ícone do hambúrguer para um 'X' e vice-versa
                     if (mobileMenu.classList.contains('hidden')) {
                         mobileMenuButton.innerHTML = '&#9776;'; // Hambúrguer
                     } else {
