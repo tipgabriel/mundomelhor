@@ -15,7 +15,7 @@
             background-color: #181818;
         }
         .text-secondary-gold {
-            color: #FFF;
+            color: #FFD700; /* Ajustado para ser mais visível no header */
         }
         .hover\:text-secondary-gold:hover { color: #FFD700; }
         .bg-secondary-gold { background-color: #FFD700; }
@@ -23,14 +23,42 @@
         .text-interactive-accent { color: #007BFF; }
         .hover\:text-interactive-accent:hover { color: #0056b3; }
         .border-secondary-gold { border-color: #FFD700; }
+
+        /* Estilos para o menu mobile */
+        .mobile-menu {
+            display: none; /* Escondido por padrão */
+            flex-direction: column;
+            position: absolute;
+            top: 100%; /* Abaixo do header */
+            left: 0;
+            width: 100%;
+            background-color: #181818;
+            padding: 1rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .mobile-menu.active {
+            display: flex; /* Visível quando ativo */
+        }
+        .mobile-menu a {
+            color: white;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            transition: color 0.3s;
+        }
+        .mobile-menu a:last-child {
+            border-bottom: none;
+        }
+        .mobile-menu a:hover {
+            color: #FFD700;
+        }
     </style>
 </head>
 <body class="font-sans bg-light-bg text-dark-text">
 
     <header class="sticky top-0 z-50 bg-primary-dark text-white p-4 shadow-lg">
-        <div class="container mx-auto flex justify-between items-center">
+        <div class="container mx-auto flex justify-between items-center relative">
             <a href="index.html" class="text-3xl font-serif font-bold text-secondary-gold">TIP</a>
-            <nav class="hidden md:flex space-x-6">
+            <nav id="desktop-menu" class="hidden md:flex space-x-6">
                 <a href="inovacoes.html?cat=inovacoes" class="text-secondary-gold transition-colors border-b-2 border-secondary-gold">Inovações</a>
                 <a href="economia-do-bem.html?cat=economia-do-bem" class="hover:text-secondary-gold transition-colors">Economia do Bem</a>
                 <a href="saude-bem-estar.html?cat=saude-bem-estar" class="hover:text-secondary-gold transition-colors">Saúde & Bem-estar</a>
@@ -41,9 +69,24 @@
                 <a href="contato.html" class="hover:text-secondary-gold transition-colors">Contato</a>
             </nav>
             <div class="flex items-center space-x-4">
-                <input type="search" placeholder="Buscar..." class="p-2 rounded bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-secondary-gold">
-                <button class="md:hidden text-white text-2xl">&#9776;</button>
+                <input type="search" placeholder="Buscar..." class="p-2 rounded bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-secondary-gold hidden md:block">
+                <button id="mobile-menu-button" class="md:hidden text-white text-3xl focus:outline-none">
+                    &#9776; <!-- Ícone de hambúrguer -->
+                </button>
             </div>
+
+            <!-- Menu Mobile (oculto por padrão) -->
+            <nav id="mobile-menu" class="mobile-menu">
+                <a href="inovacoes.html?cat=inovacoes">Inovações</a>
+                <a href="economia-do-bem.html?cat=economia-do-bem">Economia do Bem</a>
+                <a href="saude-bem-estar.html?cat=saude-bem-estar">Saúde & Bem-estar</a>
+                <a href="meio-ambiente.html?cat=meio-ambiente">Meio Ambiente</a>
+                <a href="historias-inspiradoras.html?cat=historias-inspiradoras">Histórias Inspiradoras</a>
+                <a href="mundo-melhor.html?cat=mundo-melhor">Mundo Melhor</a>
+                <a href="sobre.html">Sobre Nós</a>
+                <a href="contato.html">Contato</a>
+                <input type="search" placeholder="Buscar..." class="p-2 rounded bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-secondary-gold mt-4">
+            </nav>
         </div>
     </header>
 
@@ -101,7 +144,22 @@
         </div>
     </footer>
 
-    <script src="./public/js/main.js"></script>
-    <script src="https://kit.fontawesome.com/your-font-awesome-kit-id.js" crossorigin="anonymous"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const currentYearSpan = document.getElementById('current-year');
+
+            // Toggle do menu mobile
+            mobileMenuButton.addEventListener('click', function() {
+                mobileMenu.classList.toggle('active');
+            });
+
+            // Atualiza o ano no footer
+            currentYearSpan.textContent = new Date().getFullYear();
+        });
+    </script>
+    <!-- Inclua Font Awesome via CDN ou seu próprio kit -->
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </body>
 </html>
