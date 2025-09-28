@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trabalhe Conosco - TIP: Boas notícias para tempos urgentes.</title>
+    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="Tip" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        .font-serif {
+            font-family: 'Playfair Display', serif;
+        }
+        .font-sans {
+            font-family: 'Roboto', sans-serif;
+        }
+        .text-dark-text {
+            color: #333333;
+        }
+        .bg-light-bg {
+            background-color: #F4F4F4;
+        }
+        .bg-primary-dark {
+            background-color: #181818;
+        }
+        .text-secondary-gold {
+            color: #FFF; /* Alterado de #FFD700 para #FFF para o texto principal, ajustado onde necessário */
+        }
+        .hover\:text-secondary-gold:hover {
+            color: #FFD700;
+        }
+        .bg-secondary-gold {
+            background-color: #FFD700; /* Corrigido para ser #FFD700 conforme a paleta */
+        }
+        .hover\:bg-yellow-600:hover {
+            background-color: #0056b3; /* Mantido como estava */
+        }
+        .text-interactive-accent {
+            color: #007BFF;
+        }
+        .hover\:text-interactive-accent:hover {
+            color: #0056b3;
+        }
+        .border-secondary-gold {
+            border-color: #FFD700;
+        }
+        .hero-section {
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background: linear-gradient(135deg, #010101 0%, #121212 40%, #1a1a1a 70%, #222222 100%);
+        }
+        .hero-section > div {
+            position: relative;
+            color: white;
+            z-index: 10;
+        }
+        /* Estilo para o menu mobile aberto */
+        .mobile-menu-active {
+            display: flex; /* ou block, dependendo do layout desejado */
+            flex-direction: column;
+        }
+    </style>
+</head>
+<body class="font-sans bg-light-bg text-dark-text">
+<header class="sticky top-0 z-50 bg-primary-dark text-white p-4 shadow-lg">
+    <div class="container mx-auto flex justify-between items-center">
+        <a href="index.html" class="text-3xl font-serif font-bold text-secondary-gold">TIP</a>
+        <!-- Menu de navegação desktop -->
+        <nav class="hidden md:flex space-x-6">
+            <a href="inovacoes.html?cat=inovacoes" class="hover:text-secondary-gold transition-colors">Inovações</a>
+            <a href="economia-do-bem.html?cat=economia-do-bem" class="hover:text-secondary-gold transition-colors">Economia do Bem</a>
+            <a href="saude-bem-estar.html?cat=saude-bem-estar" class="hover:text-secondary-gold transition-colors">Saúde & Bem-estar</a>
+            <a href="meio-ambiente.html?cat=meio-ambiente" class="hover:text-secondary-gold transition-colors">Meio Ambiente</a>
+            <a href="historias-inspiradoras.html?cat=historias-inspiradoras" class="hover:text-secondary-gold transition-colors">Histórias Inspiradoras</a>
+            <a href="mundo-melhor.html?cat=mundo-melhor" class="hover:text-secondary-gold transition-colors">Mundo Melhor</a>
+            <a href="sobre.html" class="hover:text-secondary-gold transition-colors">Sobre Nós</a>
+            <a href="contato.html" class="hover:text-secondary-gold transition-colors">Contato</a>
+            <a href="trabalhe-conosco.html" class="text-secondary-gold border-b-2 border-secondary-gold">Trabalhe Conosco</a>
+        </nav>
+        
+        <div class="flex items-center space-x-4">
+            <!-- Campo de busca visível apenas em desktop -->
+            <input type="search" placeholder="Buscar..." class="hidden md:block p-2 rounded bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-secondary-gold">
+            
+            <!-- Botão do menu hambúrguer visível apenas em mobile -->
+            <button id="mobile-menu-button" class="md:hidden text-white text-2xl focus:outline-none">
+                &#9776; <!-- Ícone de hambúrguer -->
+            </button>
+        </div>
+    </div>
+
+    <!-- Menu mobile (oculto por padrão, visível com JS) -->
+    <nav id="mobile-menu" class="hidden md:hidden flex-col space-y-2 mt-4 px-2">
+        <input type="search" placeholder="Buscar..." class="p-2 rounded bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-secondary-gold w-full">
+        <a href="inovacoes.html?cat=inovacoes" class="block p-2 hover:bg-gray-700 rounded transition-colors">Inovações</a>
+        <a href="economia-do-bem.html?cat=economia-do-bem" class="block p-2 hover:bg-gray-700 rounded transition-colors">Economia do Bem</a>
+        <a href="saude-bem-estar.html?cat=saude-bem-estar" class="block p-2 hover:bg-gray-700 rounded transition-colors">Saúde & Bem-estar</a>
+        <a href="meio-ambiente.html?cat=meio-ambiente" class="block p-2 hover:bg-gray-700 rounded transition-colors">Meio Ambiente</a>
+        <a href="historias-inspiradoras.html?cat=historias-inspiradoras" class="block p-2 hover:bg-gray-700 rounded transition-colors">Histórias Inspiradoras</a>
+        <a href="mundo-melhor.html?cat=mundo-melhor" class="block p-2 hover:bg-gray-700 rounded transition-colors">Mundo Melhor</a>
+        <a href="sobre.html" class="block p-2 hover:bg-gray-700 rounded transition-colors">Sobre Nós</a>
+        <a href="contato.html" class="block p-2 hover:bg-gray-700 rounded transition-colors">Contato</a>
+        <a href="trabalhe-conosco.html" class="block p-2 text-secondary-gold bg-gray-700 rounded transition-colors">Trabalhe Conosco</a>
+    </nav>
+</header>
+
+<main class="container mx-auto p-4 mt-8">
+    <section class="mb-12">
+        <h1 class="text-4xl md:text-5xl font-serif font-bold text-dark-text mb-6">Trabalhe Conosco</h1>
+        <p class="text-lg text-gray-700 mb-8">
+            Na TIP, acreditamos no poder das boas notícias para inspirar e transformar o mundo. Se você é apaixonado(a) por jornalismo positivo, inovação e busca fazer a diferença, este é o seu lugar. Venha construir conosco um futuro mais otimista.
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <h2 class="text-2xl font-serif font-bold text-interactive-accent mb-4">Por que trabalhar na TIP?</h2>
+                <ul class="list-disc list-inside text-gray-700 space-y-2">
+                    <li>Ambiente de trabalho colaborativo e inspirador.</li>
+                    <li>Oportunidade de fazer a diferença e impactar positivamente a sociedade.</li>
+                    <li>Foco em histórias que elevam, informam e motivam.</li>
+                    <li>Cultura que valoriza a inovação, criatividade e o desenvolvimento profissional.</li>
+                    <li>Pacote de benefícios competitivo e flexibilidade.</li>
+                </ul>
+            </div>
+
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <h2 class="text-2xl font-serif font-bold text-interactive-accent mb-4">Nossas Vagas Atuais</h2>
+                <div class="space-y-4">
+                    <div class="border-b border-gray-200 pb-4">
+                        <h3 class="text-xl font-semibold text-dark-text">Redator(a) de Conteúdo (Jr/Pleno)</h3>
+                        <p class="text-gray-600 text-sm">Responsável pela criação de artigos e reportagens focados em notícias positivas.</p>
+                        <p class="text-sm font-bold text-primary-dark">Modalidade: Remoto | Período: Integral</p>
+                        <a href="#" class="inline-block mt-2 text-interactive-accent hover:underline">Ver Detalhes</a>
+                    </div>
+                    <div class="border-b border-gray-200 pb-4">
+                        <h3 class="text-xl font-semibold text-dark-text">Designer Gráfico</h3>
+                        <p class="text-gray-600 text-sm">Criação de materiais visuais para o site, redes sociais e campanhas.</p>
+                        <p class="text-sm font-bold text-primary-dark">Modalidade: Híbrido (São Paulo) | Período: Integral</p>
+                        <a href="#" class="inline-block mt-2 text-interactive-accent hover:underline">Ver Detalhes</a>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-semibold text-dark-text">Desenvolvedor(a) Web (Front-end)</h3>
+                        <p class="text-gray-600 text-sm">Manutenção e desenvolvimento de novas funcionalidades para o portal da TIP.</p>
+                        <p class="text-sm font-bold text-primary-dark">Modalidade: Remoto | Período: Integral</p>
+                        <a href="#" class="inline-block mt-2 text-interactive-accent hover:underline">Ver Detalhes</a>
+                    </div>
+                </div>
+                <p class="mt-6 text-gray-700">Não encontrou a vaga ideal? <a href="contato.html" class="text-interactive-accent hover:underline font-bold">Envie seu currículo</a> mesmo assim! Estamos sempre em busca de talentos.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="bg-white rounded-lg shadow-md p-8 mb-12">
+        <h2 class="text-3xl font-serif font-bold text-dark-text mb-6 text-center">Junte-se à nossa equipe!</h2>
+        <p class="text-lg text-gray-700 mb-8 text-center max-w-2xl mx-auto">
+            Se você se identifica com a nossa missão e valores, gostaríamos muito de te conhecer. Preencha o formulário abaixo ou envie seu currículo para <a href="mailto:rh@tipnoticias.com" class="text-interactive-accent hover:underline">rh@tipnoticias.com</a>.
+        </p>
+
+        <form class="max-w-xl mx-auto space-y-6">
+            <div>
+                <label for="nome" class="block text-gray-700 text-sm font-bold mb-2">Nome Completo:</label>
+                <input type="text" id="nome" name="nome" class="shadow appearance-none border rounded w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-secondary-gold" placeholder="Seu nome completo">
+            </div>
+            <div>
+                <label for="email" class="block text-gray-700 text-sm font-bold mb-2">E-mail:</label>
+                <input type="email" id="email" name="email" class="shadow appearance-none border rounded w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-secondary-gold" placeholder="seu.email@exemplo.com">
+            </div>
+            <div>
+                <label for="telefone" class="block text-gray-700 text-sm font-bold mb-2">Telefone:</label>
+                <input type="tel" id="telefone" name="telefone" class="shadow appearance-none border rounded w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-secondary-gold" placeholder="(XX) XXXXX-XXXX">
+            </div>
+            <div>
+                <label for="vaga" class="block text-gray-700 text-sm font-bold mb-2">Vaga de Interesse (Opcional):</label>
+                <select id="vaga" name="vaga" class="shadow appearance-none border rounded w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-secondary-gold">
+                    <option value="">Selecione uma vaga</option>
+                    <option value="redator-conteudo">Redator(a) de Conteúdo</option>
+                    <option value="designer-grafico">Designer Gráfico</option>
+                    <option value="desenvolvedor-web">Desenvolvedor(a) Web</option>
+                    <option value="outras">Outras Áreas / Banco de Talentos</option>
+                </select>
+            </div>
+            <div>
+                <label for="mensagem" class="block text-gray-700 text-sm font-bold mb-2">Carta de Apresentação / Mensagem (Opcional):</label>
+                <textarea id="mensagem" name="mensagem" rows="5" class="shadow appearance-none border rounded w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-secondary-gold" placeholder="Conte-nos um pouco sobre você e o que te atraiu à TIP..."></textarea>
+            </div>
+            <div>
+                <label for="curriculo" class="block text-gray-700 text-sm font-bold mb-2">Anexar Currículo (PDF, DOC, DOCX):</label>
+                <input type="file" id="curriculo" name="curriculo" accept=".pdf,.doc,.docx" class="block w-full text-sm text-gray-700 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-secondary-gold file:text-primary-dark hover:file:bg-secondary-gold/80 hover:file:cursor-pointer">
+            </div>
+            <div class="text-center">
+                <button type="submit" class="bg-primary-dark text-white font-bold py-3 px-8 rounded-full hover:bg-white hover:text-black transition-colors focus:outline-none focus:shadow-outline">
+                    Enviar Candidatura
+                </button>
+            </div>
+        </form>
+    </section>
+
+</main>
+
+<footer class="bg-primary-dark text-white p-8 mt-12">
+    <div class="container mx-auto text-center md:flex md:justify-between md:items-center">
+        <div class="mb-4 md:mb-0">
+            <h3 class="text-2xl font-serif font-bold text-secondary-gold">TIP</h3>
+            <p class="text-sm mt-2">Boas notícias para tempos urgentes.</p>
+        </div>
+        <nav class="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-6 text-sm">
+            <a href="privacidade.html" class="hover:text-secondary-gold transition-colors">Política de Privacidade</a>
+            <a href="#" class="hover:text-secondary-gold transition-colors">Termos de Uso</a>
+            <a href="trabalhe-conosco.html" class="text-secondary-gold">Trabalhe Conosco</a>
+            <a href="#" class="hover:text-secondary-gold transition-colors">Anuncie</a>
+        </nav>
+        <div class="mt-4 md:mt-0 text-lg">
+            <a href="#" class="mx-2 hover:text-secondary-gold transition-colors"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="mx-2 hover:text-secondary-gold transition-colors"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="mx-2 hover:text-secondary-gold transition-colors"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="mx-2 hover:text-secondary-gold transition-colors"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+    </div>
+    <div class="text-center text-sm mt-8 opacity-75">
+        &copy; <span id="current-year"></span> TIP. Todos os direitos reservados.
+    </div>
+</footer>
+<!-- Script para o menu hambúrguer e ano atual -->
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        if (mobileMenuButton && mobileMenu) {
+            mobileMenuButton.addEventListener('click', function() {
+                mobileMenu.classList.toggle('hidden');
+                // Opcional: Altera o ícone do hambúrguer para um 'X'
+                if (mobileMenu.classList.contains('hidden')) {
+                    mobileMenuButton.innerHTML = '&#9776;'; // Hambúrguer
+                } else {
+                    mobileMenuButton.innerHTML = '&times;'; // X
+                }
+            });
+        }
+
+        // Atualiza o ano no rodapé
+        const currentYearSpan = document.getElementById('current-year');
+        if (currentYearSpan) {
+            currentYearSpan.textContent = new Date().getFullYear();
+        }
+    });
+</script>
+<script src="https://kit.fontawesome.com/your-font-awesome-kit-id.js" crossorigin="anonymous"></script>
+</body>
+</html>
