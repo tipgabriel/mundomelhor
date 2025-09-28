@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Termos de Uso - TIP: Boas notícias para tempos urgentes.</title>
+    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="Tip" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        .font-serif {
+            font-family: 'Playfair Display', serif;
+        }
+        .font-sans {
+            font-family: 'Roboto', sans-serif;
+        }
+        .text-dark-text {
+            color: #333333;
+        }
+        .bg-light-bg {
+            background-color: #F4F4F4;
+        }
+        .bg-primary-dark {
+            background-color: #181818;
+        }
+        .text-secondary-gold {
+            color: #FFF; /* Alterado de #FFD700 para #FFF para o texto principal, ajustado onde necessário */
+        }
+        .hover\:text-secondary-gold:hover {
+            color: #FFD700;
+        }
+        .bg-secondary-gold {
+            background-color: #FFD700; /* Corrigido para ser #FFD700 conforme a paleta */
+        }
+        .hover\:bg-yellow-600:hover {
+            background-color: #0056b3; /* Mantido como estava */
+        }
+        .text-interactive-accent {
+            color: #007BFF;
+        }
+        .hover\:text-interactive-accent:hover {
+            color: #0056b3;
+        }
+        .border-secondary-gold {
+            border-color: #FFD700;
+        }
+        .hero-section {
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background: linear-gradient(135deg, #010101 0%, #121212 40%, #1a1a1a 70%, #222222 100%);
+        }
+        .hero-section > div {
+            position: relative;
+            color: white;
+            z-index: 10;
+        }
+        /* Estilo para o menu mobile aberto */
+        .mobile-menu-active {
+            display: flex; /* ou block, dependendo do layout desejado */
+            flex-direction: column;
+        }
+    </style>
+</head>
+<body class="font-sans bg-light-bg text-dark-text">
+<header class="sticky top-0 z-50 bg-primary-dark text-white p-4 shadow-lg">
+    <div class="container mx-auto flex justify-between items-center">
+        <a href="index.html" class="text-3xl font-serif font-bold text-secondary-gold">TIP</a>
+        <!-- Menu de navegação desktop -->
+        <nav class="hidden md:flex space-x-6">
+            <a href="inovacoes.html?cat=inovacoes" class="hover:text-secondary-gold transition-colors">Inovações</a>
+            <a href="economia-do-bem.html?cat=economia-do-bem" class="hover:text-secondary-gold transition-colors">Economia do Bem</a>
+            <a href="saude-bem-estar.html?cat=saude-bem-estar" class="hover:text-secondary-gold transition-colors">Saúde & Bem-estar</a>
+            <a href="meio-ambiente.html?cat=meio-ambiente" class="hover:text-secondary-gold transition-colors">Meio Ambiente</a>
+            <a href="historias-inspiradoras.html?cat=historias-inspiradoras" class="hover:text-secondary-gold transition-colors">Histórias Inspiradoras</a>
+            <a href="mundo-melhor.html?cat=mundo-melhor" class="hover:text-secondary-gold transition-colors">Mundo Melhor</a>
+            <a href="sobre.html" class="hover:text-secondary-gold transition-colors">Sobre Nós</a>
+            <a href="contato.html" class="hover:text-secondary-gold transition-colors">Contato</a>
+            <a href="trabalhe-conosco.html" class="hover:text-secondary-gold transition-colors">Trabalhe Conosco</a>
+        </nav>
+        
+        <div class="flex items-center space-x-4">
+            <!-- Campo de busca visível apenas em desktop -->
+            <input type="search" placeholder="Buscar..." class="hidden md:block p-2 rounded bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-secondary-gold">
+            
+            <!-- Botão do menu hambúrguer visível apenas em mobile -->
+            <button id="mobile-menu-button" class="md:hidden text-white text-2xl focus:outline-none">
+                &#9776; <!-- Ícone de hambúrguer -->
+            </button>
+        </div>
+    </div>
+
+    <!-- Menu mobile (oculto por padrão, visível com JS) -->
+    <nav id="mobile-menu" class="hidden md:hidden flex-col space-y-2 mt-4 px-2">
+        <input type="search" placeholder="Buscar..." class="p-2 rounded bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-secondary-gold w-full">
+        <a href="inovacoes.html?cat=inovacoes" class="block p-2 hover:bg-gray-700 rounded transition-colors">Inovações</a>
+        <a href="economia-do-bem.html?cat=economia-do-bem" class="block p-2 hover:bg-gray-700 rounded transition-colors">Economia do Bem</a>
+        <a href="saude-bem-estar.html?cat=saude-bem-estar" class="block p-2 hover:bg-gray-700 rounded transition-colors">Saúde & Bem-estar</a>
+        <a href="meio-ambiente.html?cat=meio-ambiente" class="block p-2 hover:bg-gray-700 rounded transition-colors">Meio Ambiente</a>
+        <a href="historias-inspiradoras.html?cat=historias-inspiradoras" class="block p-2 hover:bg-gray-700 rounded transition-colors">Histórias Inspiradoras</a>
+        <a href="mundo-melhor.html?cat=mundo-melhor" class="block p-2 hover:bg-gray-700 rounded transition-colors">Mundo Melhor</a>
+        <a href="sobre.html" class="block p-2 hover:bg-gray-700 rounded transition-colors">Sobre Nós</a>
+        <a href="contato.html" class="block p-2 hover:bg-gray-700 rounded transition-colors">Contato</a>
+        <a href="trabalhe-conosco.html" class="block p-2 hover:bg-gray-700 rounded transition-colors">Trabalhe Conosco</a>
+    </nav>
+</header>
+
+<main class="container mx-auto p-4 mt-8">
+    <section class="mb-12">
+        <h1 class="text-4xl md:text-5xl font-serif font-bold text-dark-text mb-6">Termos de Uso</h1>
+        <p class="text-lg text-gray-700 mb-8">
+            Bem-vindo(a) à TIP! Estes Termos de Uso ("Termos") regem o uso do nosso website e dos serviços oferecidos pela TIP. Ao acessar ou usar nosso website, você concorda em cumprir e estar vinculado(a) a estes Termos. Por favor, leia-os atentamente.
+        </p>
+
+        <div class="bg-white rounded-lg shadow-md p-6 mb-8">
+            <h2 class="text-2xl font-serif font-bold text-interactive-accent mb-4">1. Aceitação dos Termos</h2>
+            <p class="text-gray-700 mb-4">
+                Ao acessar e utilizar a TIP, você declara que leu, compreendeu e concordou com estes Termos de Uso na íntegra. Se você não concorda com qualquer parte destes Termos, você não deve utilizar o website.
+            </p>
+        </div>
+
+        <div class="bg-white rounded-lg shadow-md p-6 mb-8">
+            <h2 class="text-2xl font-serif font-bold text-interactive-accent mb-4">2. Uso do Conteúdo</h2>
+            <ul class="list-disc list-inside text-gray-700 space-y-2 mb-4">
+                <li>Todo o conteúdo presente na TIP, incluindo textos, imagens, vídeos, áudios e gráficos, é de propriedade da TIP ou de seus licenciadores e é protegido por leis de direitos autorais e propriedade intelectual.</li>
+                <li>Você pode acessar e visualizar o conteúdo para seu uso pessoal e não comercial.</li>
+                <li>É proibida a reprodução, distribuição, modificação, exibição pública ou criação de obras derivadas de qualquer conteúdo da TIP sem autorização prévia por escrito.</li>
+                <li>Qualquer uso não autorizado do conteúdo pode violar leis de direitos autorais, marcas registradas e outras regulamentações.</li>
+            </ul>
+        </div>
+
+        <div class="bg-white rounded-lg shadow-md p-6 mb-8">
+            <h2 class="text-2xl font-serif font-bold text-interactive-accent mb-4">3. Conduta do Usuário</h2>
+            <p class="text-gray-700 mb-4">
+                Ao utilizar a TIP, você concorda em não:
+            </p>
+            <ul class="list-disc list-inside text-gray-700 space-y-2 mb-4">
+                <li>Publicar ou transmitir qualquer material ilegal, difamatório, obsceno, ameaçador, abusivo, que viole a privacidade de terceiros ou seja questionável.</li>
+                <li>Realizar atividades que possam prejudicar, desativar, sobrecarregar ou comprometer a segurança ou o funcionamento do website.</li>
+                <li>Tentar obter acesso não autorizado a sistemas, redes ou dados relacionados à TIP.</li>
+                <li>Utilizar o website para fins comerciais sem autorização expressa da TIP.</li>
+            </ul>
+        </div>
+
+        <div class="bg-white rounded-lg shadow-md p-6 mb-8">
+            <h2 class="text-2xl font-serif font-bold text-interactive-accent mb-4">4. Links para Terceiros</h2>
+            <p class="text-gray-700 mb-4">
+                Nosso website pode conter links para websites ou serviços de terceiros que não são de propriedade ou controlados pela TIP. Não temos controle sobre, e não assumimos responsabilidade pelo conteúdo, políticas de privacidade ou práticas de quaisquer websites ou serviços de terceiros. Você reconhece e concorda que a TIP não será responsável, direta ou indiretamente, por qualquer dano ou perda causada ou alegadamente causada por ou em conexão com o uso de ou dependência de qualquer conteúdo, bens ou serviços disponíveis em ou através de quaisquer desses websites ou serviços.
+            </p>
+        </div>
+
+        <div class="bg-white rounded-lg shadow-md p-6 mb-8">
+            <h2 class="text-2xl font-serif font-bold text-interactive-accent mb-4">5. Isenção de Garantias</h2>
+            <p class="text-gray-700 mb-4">
+                A TIP é fornecida "como está" e "conforme disponível", sem quaisquer garantias de qualquer tipo, expressas ou implícitas, incluindo, mas não se limitando a, garantias implícitas de comercialidade, adequação a uma finalidade específica e não violação. A TIP não garante que o website será ininterrupto, seguro ou livre de erros.
+            </p>
+        </div>
+
+        <div class="bg-white rounded-lg shadow-md p-6 mb-8">
+            <h2 class="text-2xl font-serif font-bold text-interactive-accent mb-4">6. Limitação de Responsabilidade</h2>
+            <p class="text-gray-700 mb-4">
+                Em nenhuma circunstância a TIP, seus diretores, funcionários, parceiros, agentes, fornecedores ou afiliados serão responsáveis por quaisquer danos indiretos, incidentais, especiais, consequenciais ou punitivos, incluindo, sem limitação, perda de lucros, dados, uso, boa vontade ou outras perdas intangíveis, resultantes (i) do seu acesso ou uso ou incapacidade de acessar ou usar o website; (ii) de qualquer conduta ou conteúdo de terceiros no website; (iii) de qualquer conteúdo obtido do website; e (iv) de acesso, uso ou alteração não autorizados de suas transmissões ou conteúdo, seja com base em garantia, contrato, delito (incluindo negligência) ou qualquer outra teoria legal, quer tenhamos sido ou não informados da possibilidade de tais danos, e mesmo que um recurso aqui estabelecido seja considerado como tendo falhado em seu propósito essencial.
+            </p>
+        </div>
+
+        <div class="bg-white rounded-lg shadow-md p-6 mb-8">
+            <h2 class="text-2xl font-serif font-bold text-interactive-accent mb-4">7. Alterações nos Termos</h2>
+            <p class="text-gray-700 mb-4">
+                Reservamo-nos o direito de modificar ou substituir estes Termos a qualquer momento, a nosso exclusivo critério. Se uma revisão for material, tentaremos fornecer um aviso com pelo menos 30 dias de antecedência antes que quaisquer novos termos entrem em vigor. O que constitui uma alteração material será determinado a nosso exclusivo critério.
+            </p>
+            <p class="text-gray-700 mb-4">
+                Ao continuar a acessar ou usar nosso website após a entrada em vigor de quaisquer revisões, você concorda em ficar vinculado(a) aos termos revisados. Se você não concorda com os novos termos, você não está mais autorizado(a) a usar a TIP.
+            </p>
+        </div>
+
+        <div class="bg-white rounded-lg shadow-md p-6 mb-8">
+            <h2 class="text-2xl font-serif font-bold text-interactive-accent mb-4">8. Lei Aplicável</h2>
+            <p class="text-gray-700 mb-4">
+                Estes Termos serão regidos e interpretados de acordo com as leis do [Seu País/Estado], sem levar em consideração suas disposições sobre conflitos de leis.
+            </p>
+        </div>
+
+        <div class="bg-white rounded-lg shadow-md p-6">
+            <h2 class="text-2xl font-serif font-bold text-interactive-accent mb-4">9. Contato</h2>
+            <p class="text-gray-700 mb-4">
+                Se você tiver alguma dúvida sobre estes Termos, entre em contato conosco através do e-mail: <a href="mailto:contato@tipnoticias.com" class="text-interactive-accent hover:underline">contato@tipnoticias.com</a>.
+            </p>
+            <p class="text-gray-700">
+                Data da última atualização: 23 de Outubro de 2023.
+            </p>
+        </div>
+    </section>
+</main>
+
+<footer class="bg-primary-dark text-white p-8 mt-12">
+    <div class="container mx-auto text-center md:flex md:justify-between md:items-center">
+        <div class="mb-4 md:mb-0">
+            <h3 class="text-2xl font-serif font-bold text-secondary-gold">TIP</h3>
+            <p class="text-sm mt-2">Boas notícias para tempos urgentes.</p>
+        </div>
+        <nav class="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-6 text-sm">
+            <a href="privacidade.html" class="hover:text-secondary-gold transition-colors">Política de Privacidade</a>
+            <a href="#" class="text-secondary-gold border-b-2 border-secondary-gold">Termos de Uso</a>
+            <a href="trabalhe-conosco.html" class="hover:text-secondary-gold transition-colors">Trabalhe Conosco</a>
+            <a href="#" class="hover:text-secondary-gold transition-colors">Anuncie</a>
+        </nav>
+        <div class="mt-4 md:mt-0 text-lg">
+            <a href="#" class="mx-2 hover:text-secondary-gold transition-colors"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="mx-2 hover:text-secondary-gold transition-colors"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="mx-2 hover:text-secondary-gold transition-colors"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="mx-2 hover:text-secondary-gold transition-colors"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+    </div>
+    <div class="text-center text-sm mt-8 opacity-75">
+        &copy; <span id="current-year"></span> TIP. Todos os direitos reservados.
+    </div>
+</footer>
+<!-- Script para o menu hambúrguer e ano atual -->
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        if (mobileMenuButton && mobileMenu) {
+            mobileMenuButton.addEventListener('click', function() {
+                mobileMenu.classList.toggle('hidden');
+                // Opcional: Altera o ícone do hambúrguer para um 'X'
+                if (mobileMenu.classList.contains('hidden')) {
+                    mobileMenuButton.innerHTML = '&#9776;'; // Hambúrguer
+                } else {
+                    mobileMenuButton.innerHTML = '&times;'; // X
+                }
+            });
+        }
+
+        // Atualiza o ano no rodapé
+        const currentYearSpan = document.getElementById('current-year');
+        if (currentYearSpan) {
+            currentYearSpan.textContent = new Date().getFullYear();
+        }
+    });
+</script>
+<script src="https://kit.fontawesome.com/your-font-awesome-kit-id.js" crossorigin="anonymous"></script>
+</body>
+</html>
