@@ -4,81 +4,86 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Política de Privacidade - TIP</title>
+    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="Tip" />
+    <link rel="manifest" href="/site.webmanifest" />
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        .font-serif { font-family: 'Playfair Display', serif; }
-        .font-sans { font-family: 'Roboto', sans-serif; }
-        .text-dark-text { color: #333333; }
-        .bg-light-bg { background-color: #F4F4F4; }
+        .font-serif {
+            font-family: 'Playfair Display', serif;
+        }
+        .font-sans {
+            font-family: 'Roboto', sans-serif;
+        }
+        .text-dark-text {
+            color: #333333;
+        }
+        .bg-light-bg {
+            background-color: #F4F4F4;
+        }
         .bg-primary-dark {
             background-color: #181818;
         }
         .text-secondary-gold {
-            color: #FFF;
+            color: #FFF; /* Alterado de #FFD700 para #FFF para o texto principal, ajustado onde necessário */
         }
-        .header-logo-gold {
+        .hover\:text-secondary-gold:hover {
             color: #FFD700;
         }
-        .hover\:text-secondary-gold:hover { color: #FFD700; }
-        .bg-secondary-gold { background-color: #FFD700; }
-        .hover\:bg-yellow-600:hover { background-color: #C5A000; }
-        .text-interactive-accent { color: #007BFF; }
-        .hover\:text-interactive-accent:hover { color: #0056b3; }
-        .border-secondary-gold { border-color: #FFD700; }
-
-        #mobile-menu {
-            max-height: calc(100vh - 64px);
-            overflow-y: auto;
+        .bg-secondary-gold {
+            background-color: #FFD700; /* Corrigido para ser #FFD700 conforme a paleta */
         }
-
-        /* Estilos específicos para o conteúdo da política de privacidade */
-        .content-section h2 {
-            font-family: 'Playfair Display', serif;
-            font-weight: 700;
-            font-size: 2.25rem; /* text-4xl */
-            margin-top: 2rem;
-            margin-bottom: 1rem;
-            color: #181818; /* ou ajuste conforme o contraste desejado */
+        .hover\:bg-yellow-600:hover {
+            background-color: #0056b3; /* Mantido como estava */
         }
-        .content-section h3 {
-            font-family: 'Roboto', sans-serif;
-            font-weight: 700;
-            font-size: 1.5rem; /* text-2xl */
-            margin-top: 1.5rem;
-            margin-bottom: 0.75rem;
-            color: #333333;
-        }
-        .content-section p, .content-section ul, .content-section ol {
-            margin-bottom: 1rem;
-            line-height: 1.6;
-            color: #555555;
-        }
-        .content-section ul {
-            list-style-type: disc;
-            margin-left: 1.5rem;
-        }
-        .content-section ol {
-            list-style-type: decimal;
-            margin-left: 1.5rem;
-        }
-        .content-section a {
+        .text-interactive-accent {
             color: #007BFF;
-            text-decoration: underline;
         }
-        .content-section a:hover {
+        .hover\:text-interactive-accent:hover {
             color: #0056b3;
+        }
+        .border-secondary-gold {
+            border-color: #FFD700;
+        }
+        .hero-section {
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background: linear-gradient(135deg, #010101 0%, #121212 40%, #1a1a1a 70%, #222222 100%);
+        }
+        .hero-section > div {
+            position: relative;
+            color: white;
+            z-index: 10;
+        }
+        /* Estilo para o menu mobile aberto */
+        .mobile-menu-active {
+            display: flex; /* ou block, dependendo do layout desejado */
+            flex-direction: column;
         }
     </style>
 </head>
 <body class="font-sans bg-light-bg text-dark-text">
 
     <header class="sticky top-0 z-50 bg-primary-dark text-white p-4 shadow-lg">
-        <div class="container mx-auto flex justify-between items-center relative">
-            <a href="index.html" class="text-3xl font-serif font-bold header-logo-gold">TIP</a>
-            
+        <div class="container mx-auto flex justify-between items-center">
+            <a href="index.html" class="text-3xl font-serif font-bold text-secondary-gold">TIP</a>
+
+            <!-- Menu de navegação desktop -->
             <nav class="hidden md:flex space-x-6">
-                <a href="inovacoes.html?cat=inovacoes" class="text-secondary-gold hover:text-secondary-gold transition-colors">Inovações</a>
+                <a href="inovacoes.html?cat=inovacoes" class="hover:text-secondary-gold transition-colors">Inovações</a>
                 <a href="economia-do-bem.html?cat=economia-do-bem" class="hover:text-secondary-gold transition-colors">Economia do Bem</a>
                 <a href="saude-bem-estar.html?cat=saude-bem-estar" class="hover:text-secondary-gold transition-colors">Saúde & Bem-estar</a>
                 <a href="meio-ambiente.html?cat=meio-ambiente" class="hover:text-secondary-gold transition-colors">Meio Ambiente</a>
@@ -87,133 +92,124 @@
                 <a href="sobre.html" class="hover:text-secondary-gold transition-colors">Sobre Nós</a>
                 <a href="contato.html" class="hover:text-secondary-gold transition-colors">Contato</a>
             </nav>
-            
+
             <div class="flex items-center space-x-4">
-                <input type="search" placeholder="Buscar..." class="hidden md:block p-2 rounded bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-secondary-gold w-40">
-                
-                <button id="mobile-menu-button" class="md:hidden text-white text-2xl p-1 focus:outline-none focus:ring-2 focus:ring-secondary-gold rounded">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
-                    </svg>
+                <!-- Campo de busca visível apenas em desktop -->
+                <input type="search" placeholder="Buscar..." class="hidden md:block p-2 rounded bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-secondary-gold">
+
+                <!-- Botão do menu hambúrguer visível apenas em mobile -->
+                <button id="mobile-menu-button" class="md:hidden text-white text-2xl focus:outline-none">
+                    &#9776; <!-- Ícone de hambúrguer -->
                 </button>
             </div>
         </div>
 
-        <nav id="mobile-menu" class="hidden md:hidden absolute inset-x-0 top-full bg-primary-dark shadow-xl p-4 border-t border-gray-700">
-            <input type="search" placeholder="Buscar..." class="w-full p-2 mb-4 rounded bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-secondary-gold">
-
-            <a href="inovacoes.html?cat=inovacoes" class="block py-2 text-white hover:text-secondary-gold transition-colors">Inovações</a>
-            <a href="economia-do-bem.html?cat=economia-do-bem" class="block py-2 text-white hover:text-secondary-gold transition-colors">Economia do Bem</a>
-            <a href="saude-bem-estar.html?cat=saude-bem-estar" class="block py-2 text-white hover:text-secondary-gold transition-colors">Saúde & Bem-estar</a>
-            <a href="meio-ambiente.html?cat=meio-ambiente" class="block py-2 text-white hover:text-secondary-gold transition-colors">Meio Ambiente</a>
-            <a href="historias-inspiradoras.html?cat=historias-inspiradoras" class="block py-2 text-white hover:text-secondary-gold transition-colors">Histórias Inspiradoras</a>
-            <a href="mundo-melhor.html?cat=mundo-melhor" class="block py-2 text-white hover:text-secondary-gold transition-colors">Mundo Melhor</a>
-            <a href="sobre.html" class="block py-2 text-white hover:text-secondary-gold transition-colors border-t border-gray-700 mt-2 pt-2">Sobre Nós</a>
-            <a href="contato.html" class="block py-2 text-white hover:text-secondary-gold transition-colors">Contato</a>
+        <!-- Menu mobile (oculto por padrão, visível com JS) -->
+        <nav id="mobile-menu" class="hidden md:hidden flex-col space-y-2 mt-4 px-2">
+            <input type="search" placeholder="Buscar..." class="p-2 rounded bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-secondary-gold w-full">
+            <a href="inovacoes.html?cat=inovacoes" class="block p-2 hover:bg-gray-700 rounded transition-colors">Inovações</a>
+            <a href="economia-do-bem.html?cat=economia-do-bem" class="block p-2 hover:bg-gray-700 rounded transition-colors">Economia do Bem</a>
+            <a href="saude-bem-estar.html?cat=saude-bem-estar" class="block p-2 hover:bg-gray-700 rounded transition-colors">Saúde & Bem-estar</a>
+            <a href="meio-ambiente.html?cat=meio-ambiente" class="block p-2 hover:bg-gray-700 rounded transition-colors">Meio Ambiente</a>
+            <a href="historias-inspiradoras.html?cat=historias-inspiradoras" class="block p-2 hover:bg-gray-700 rounded transition-colors">Histórias Inspiradoras</a>
+            <a href="mundo-melhor.html?cat=mundo-melhor" class="block p-2 hover:bg-gray-700 rounded transition-colors">Mundo Melhor</a>
+            <a href="sobre.html" class="block p-2 hover:bg-gray-700 rounded transition-colors">Sobre Nós</a>
+            <a href="contato.html" class="block p-2 hover:bg-gray-700 rounded transition-colors">Contato</a>
         </nav>
-
     </header>
 
-    <main class="container mx-auto p-4 mt-8 bg-white shadow-lg rounded-lg">
-        <h1 class="text-4xl md:text-5xl font-serif font-bold mb-8 border-b-2 border-secondary-gold pb-2 text-dark-text">Política de Privacidade</h1>
-        
-        <div class="content-section text-dark-text">
-            <p>A sua privacidade é importante para nós. Esta política de privacidade explica como a TIP coleta, usa, compartilha e protege as informações dos nossos usuários.</p>
-            <p>Ao utilizar nosso site, você concorda com a coleta e uso de informações de acordo com esta política.</p>
+    <main class="container mx-auto p-4 mt-8">
 
-            <h2>1. Coleta de Informações</h2>
-            <h3>1.1. Informações Pessoais</h3>
-            <p>Podemos solicitar informações pessoalmente identificáveis, como nome, endereço de e-mail e outras informações de contato, apenas quando você as fornece voluntariamente, por exemplo, ao se inscrever em nossa newsletter, comentar em artigos ou preencher formulários de contato.</p>
-            <h3>1.2. Dados de Uso</h3>
-            <p>Coletamos automaticamente informações sobre como o site é acessado e utilizado ("Dados de Uso"). Esses Dados de Uso podem incluir informações como o endereço IP do seu computador, tipo de navegador, versão do navegador, as páginas do nosso site que você visita, a hora e a data da sua visita, o tempo gasto nessas páginas, identificadores exclusivos de dispositivo e outros dados de diagnóstico.</p>
-            <h3>1.3. Cookies e Tecnologias Semelhantes</h3>
-            <p>Utilizamos cookies e tecnologias de rastreamento semelhantes para monitorar a atividade em nosso serviço e reter certas informações. Cookies são arquivos com pequena quantidade de dados que podem incluir um identificador exclusivo anônimo. Os cookies são enviados para o seu navegador a partir de um site e armazenados no seu dispositivo.</p>
-            <ul>
-                <li>**Cookies de Sessão:** Usados para operar nosso Serviço.</li>
-                <li>**Cookies de Preferência:** Usados para lembrar suas preferências e várias configurações.</li>
-                <li>**Cookies de Segurança:** Usados para fins de segurança.</li>
-            </ul>
+        <section class="bg-white rounded-lg shadow-md p-8 mb-12">
+            <h1 class="text-4xl font-serif font-bold mb-6 text-primary-dark border-b-2 border-secondary-gold pb-2">Política de Privacidade</h1>
 
-            <h2>2. Uso das Informações</h2>
-            <p>A TIP usa os dados coletados para diversas finalidades:</p>
-            <ul>
-                <li>Para fornecer e manter nosso serviço.</li>
-                <li>Para notificá-lo sobre alterações em nosso serviço.</li>
-                <li>Para permitir que você participe de recursos interativos de nosso serviço quando você optar por fazê-lo.</li>
-                <li>Para fornecer suporte ao cliente.</li>
-                <li>Para monitorar o uso do nosso serviço.</li>
-                <li>Para detectar, prevenir e resolver problemas técnicos.</li>
-                <li>Para enviar newsletters, materiais de marketing ou promocionais e outras informações que possam ser de seu interesse, caso você tenha consentido em recebê-los.</li>
-            </ul>
+            <p class="mb-4 text-dark-text">A sua privacidade é importante para nós. Esta política de privacidade explica como a TIP (doravante "nós", "nosso" ou "a Empresa") coleta, usa, compartilha e protege as informações pessoais dos nossos usuários (doravante "você" ou "seu") ao interagir com nosso website e serviços.</p>
 
-            <h2>3. Compartilhamento e Divulgação de Dados</h2>
-            <p>Podemos compartilhar suas informações nas seguintes situações:</p>
-            <ul>
-                <li>**Com Provedores de Serviço:** Podemos empregar empresas e indivíduos terceirizados para facilitar nosso serviço, fornecer o serviço em nosso nome, executar serviços relacionados ao serviço ou nos ajudar a analisar como nosso serviço é usado.</li>
-                <li>**Para Conformidade Legal:** Podemos divulgar seus Dados Pessoais de boa fé, acreditando que tal ação é necessária para:
-                    <ul>
-                        <li>Cumprir uma obrigação legal.</li>
-                        <li>Proteger e defender os direitos ou propriedade da TIP.</li>
-                        <li>Prevenir ou investigar possíveis irregularidades relacionadas ao Serviço.</li>
-                        <li>Proteger a segurança pessoal dos usuários do Serviço ou do público.</li>
-                        <li>Proteger contra responsabilidade legal.</li>
+            <h2 class="text-2xl font-serif font-bold mt-8 mb-4 text-primary-dark">1. Informações que Coletamos</h2>
+            <p class="mb-4 text-dark-text">Coletamos diferentes tipos de informações para várias finalidades para fornecer e melhorar nosso Serviço a você.</p>
+            <ul class="list-disc list-inside ml-4 mb-4 text-dark-text">
+                <li class="mb-2"><strong>Dados Pessoais:</strong> Enquanto utiliza o nosso Serviço, podemos pedir que nos forneça certas informações de identificação pessoal que podem ser utilizadas para contatar ou identificar você ("Dados Pessoais"). As informações de identificação pessoal podem incluir, mas não se limitam a:
+                    <ul class="list-circle list-inside ml-6 mt-1 text-dark-text">
+                        <li>Endereço de e-mail</li>
+                        <li>Nome e sobrenome</li>
+                        <li>Cookies e Dados de Uso</li>
                     </ul>
                 </li>
+                <li class="mb-2"><strong>Dados de Uso:</strong> Podemos também coletar informações sobre como o Serviço é acessado e usado ("Dados de Uso"). Estes Dados de Uso podem incluir informações como o endereço de Protocolo de Internet do seu computador (ex: endereço IP), tipo de navegador, versão do navegador, as páginas do nosso Serviço que você visita, a hora e data da sua visita, o tempo gasto nessas páginas, identificadores exclusivos de dispositivos e outros dados de diagnóstico.</li>
+                <li class="mb-2"><strong>Dados de Rastreamento e Cookies:</strong> Usamos cookies e tecnologias de rastreamento semelhantes para rastrear a atividade em nosso Serviço e manter certas informações. Cookies são arquivos com pequena quantidade de dados que podem incluir um identificador exclusivo anônimo. Os cookies são enviados para o seu navegador a partir de um site e armazenados no seu dispositivo. As tecnologias de rastreamento também usadas são beacons, tags e scripts para coletar e rastrear informações e para melhorar e analisar o nosso Serviço.</li>
             </ul>
 
-            <h2>4. Segurança dos Dados</h2>
-            <p>A segurança dos seus dados é importante para nós, mas lembre-se de que nenhum método de transmissão pela Internet ou método de armazenamento eletrônico é 100% seguro. Embora nos esforcemos para usar meios comercialmente aceitáveis para proteger seus Dados Pessoais, não podemos garantir sua segurança absoluta.</p>
-
-            <h2>5. Seus Direitos de Proteção de Dados (LGPD/GDPR)</h2>
-            <p>Dependendo da sua localização, você pode ter os seguintes direitos de proteção de dados:</p>
-            <ul>
-                <li>**Direito de Acesso:** solicitar cópias dos seus dados pessoais.</li>
-                <li>**Direito de Retificação:** solicitar que corrijamos qualquer informação que você acredite estar imprecisa ou completar informações que você acredite estar incompletas.</li>
-                <li>**Direito ao Esquecimento:** solicitar que apaguemos seus dados pessoais, sob certas condições.</li>
-                <li>**Direito de Restrição de Processamento:** solicitar que restrinjamos o processamento dos seus dados pessoais, sob certas condições.</li>
-                <li>**Direito de Oposição ao Processamento:** opor-se ao nosso processamento dos seus dados pessoais, sob certas condições.</li>
-                <li>**Direito à Portabilidade de Dados:** solicitar que transfiramos os dados que coletamos para outra organização, ou diretamente para você, sob certas condições.</li>
+            <h2 class="text-2xl font-serif font-bold mt-8 mb-4 text-primary-dark">2. Uso das Informações</h2>
+            <p class="mb-4 text-dark-text">A TIP utiliza os dados coletados para diversas finalidades:</p>
+            <ul class="list-disc list-inside ml-4 mb-4 text-dark-text">
+                <li class="mb-2">Para fornecer e manter o nosso Serviço</li>
+                <li class="mb-2">Para notificar você sobre alterações no nosso Serviço</li>
+                <li class="mb-2">Para permitir que você participe de recursos interativos do nosso Serviço quando você optar por fazê-lo</li>
+                <li class="mb-2">Para fornecer suporte ao cliente</li>
+                <li class="mb-2">Para reunir análises ou informações valiosas para que possamos melhorar o nosso Serviço</li>
+                <li class="mb-2">Para monitorar o uso do nosso Serviço</li>
+                <li class="mb-2">Para detectar, prevenir e resolver problemas técnicos</li>
+                <li class="mb-2">Para cumprir obrigações legais</li>
             </ul>
-            <p>Para exercer qualquer um desses direitos, entre em contato conosco através das informações fornecidas na seção "Contato".</p>
 
-            <h2>6. Links para Outros Sites</h2>
-            <p>Nosso serviço pode conter links para outros sites que não são operados por nós. Se você clicar em um link de terceiros, você será direcionado para o site desse terceiro. Aconselhamos vivamente que reveja a Política de Privacidade de todos os sites que visitar.</p>
-            <p>Não temos controle e não assumimos responsabilidade pelo conteúdo, políticas de privacidade ou práticas de quaisquer sites ou serviços de terceiros.</p>
-
-            <h2>7. Privacidade de Crianças</h2>
-            <p>Nosso serviço não se destina a menores de 18 anos ("Crianças"). Não coletamos intencionalmente informações de identificação pessoal de menores de 18 anos. Se você é pai/mãe ou responsável e sabe que seu filho nos forneceu Dados Pessoais, entre em contato conosco. Se tomarmos conhecimento de que coletamos Dados Pessoais de crianças sem verificação de consentimento dos pais, tomaremos medidas para remover essas informações de nossos servidores.</p>
-
-            <h2>8. Alterações a Esta Política de Privacidade</h2>
-            <p>Podemos atualizar nossa Política de Privacidade periodicamente. Notificaremos você sobre quaisquer alterações publicando a nova Política de Privacidade nesta página.</p>
-            <p>Recomendamos que você revise esta Política de Privacidade periodicamente para quaisquer alterações. As alterações a esta Política de Privacidade são efetivas quando publicadas nesta página.</p>
-
-            <h2>9. Contato</h2>
-            <p>Se você tiver alguma dúvida sobre esta Política de Privacidade, entre em contato conosco:</p>
-            <ul>
-                <li>Por e-mail: <a href="mailto:contato@tip.com.br">contato@tip.com.br</a></li>
-                <li>Através do nosso formulário de contato: <a href="contato.html">link para o formulário de contato</a></li>
+            <h2 class="text-2xl font-serif font-bold mt-8 mb-4 text-primary-dark">3. Compartilhamento de Dados</h2>
+            <p class="mb-4 text-dark-text">Não compartilhamos suas informações pessoais com terceiros, exceto nas seguintes circunstâncias:</p>
+            <ul class="list-disc list-inside ml-4 mb-4 text-dark-text">
+                <li class="mb-2"><strong>Com Provedores de Serviço:</strong> Podemos empregar empresas e indivíduos terceirizados para facilitar o nosso Serviço ("Provedores de Serviço"), para fornecer o Serviço em nosso nome, para executar serviços relacionados ao Serviço ou para nos ajudar a analisar como nosso Serviço é usado.</li>
+                <li class="mb-2"><strong>Por Exigência Legal:</strong> Se exigido por lei ou em resposta a um processo legal válido.</li>
+                <li class="mb-2"><strong>Para Proteger Direitos:</strong> Para proteger os direitos, propriedade ou segurança da TIP, nossos usuários ou o público.</li>
             </ul>
-            <p class="text-sm text-gray-600 mt-6">Última atualização: 20 de maio de 2024</p>
-        </div>
+
+            <h2 class="text-2xl font-serif font-bold mt-8 mb-4 text-primary-dark">4. Segurança dos Dados</h2>
+            <p class="mb-4 text-dark-text">A segurança dos seus dados é importante para nós, mas lembre-se que nenhum método de transmissão pela Internet ou método de armazenamento eletrônico é 100% seguro. Embora nos esforcemos para usar meios comercialmente aceitáveis para proteger seus Dados Pessoais, não podemos garantir sua segurança absoluta.</p>
+
+            <h2 class="text-2xl font-serif font-bold mt-8 mb-4 text-primary-dark">5. Seus Direitos de Privacidade</h2>
+            <p class="mb-4 text-dark-text">De acordo com a Lei Geral de Proteção de Dados (LGPD) no Brasil e outras regulamentações aplicáveis, você tem o direito de:</p>
+            <ul class="list-disc list-inside ml-4 mb-4 text-dark-text">
+                <li class="mb-2">Acessar e receber uma cópia dos seus Dados Pessoais.</li>
+                <li class="mb-2">Solicitar a retificação de quaisquer Dados Pessoais incompletos ou imprecisos.</li>
+                <li class="mb-2">Solicitar a exclusão dos seus Dados Pessoais.</li>
+                <li class="mb-2">Opor-se ao processamento dos seus Dados Pessoais.</li>
+                <li class="mb-2">Solicitar a portabilidade dos seus Dados Pessoais para outro serviço.</li>
+                <li class="mb-2">Retirar o consentimento a qualquer momento, onde o processamento se baseia no consentimento.</li>
+            </ul>
+            <p class="mb-4 text-dark-text">Para exercer qualquer um desses direitos, entre em contato conosco através das informações fornecidas na seção "Contato".</p>
+
+            <h2 class="text-2xl font-serif font-bold mt-8 mb-4 text-primary-dark">6. Links para Outros Sites</h2>
+            <p class="mb-4 text-dark-text">Nosso Serviço pode conter links para outros sites que não são operados por nós. Se você clicar em um link de terceiros, você será direcionado para o site desse terceiro. Aconselhamos vivamente que revise a Política de Privacidade de todos os sites que visitar. Não temos controle e não assumimos nenhuma responsabilidade pelo conteúdo, políticas de privacidade ou práticas de quaisquer sites ou serviços de terceiros.</p>
+
+            <h2 class="text-2xl font-serif font-bold mt-8 mb-4 text-primary-dark">7. Privacidade de Crianças</h2>
+            <p class="mb-4 text-dark-text">Nosso Serviço não se dirige a menores de 18 anos ("Crianças"). Não coletamos intencionalmente informações de identificação pessoal de menores de 18 anos. Se você é pai/mãe ou responsável e sabe que seus filhos nos forneceram Dados Pessoais, entre em contato conosco. Se tomarmos conhecimento de que coletamos Dados Pessoais de crianças sem verificação do consentimento dos pais, tomaremos medidas para remover essas informações de nossos servidores.</p>
+
+            <h2 class="text-2xl font-serif font-bold mt-8 mb-4 text-primary-dark">8. Alterações a Esta Política de Privacidade</h2>
+            <p class="mb-4 text-dark-text">Podemos atualizar nossa Política de Privacidade de tempos em tempos. Iremos notificá-lo de quaisquer alterações publicando a nova Política de Privacidade nesta página. Aconselhamos que revise esta Política de Privacidade periodicamente para quaisquer alterações. As alterações a esta Política de Privacidade são efetivas quando são publicadas nesta página.</p>
+
+            <h2 class="text-2xl font-serif font-bold mt-8 mb-4 text-primary-dark">9. Contato</h2>
+            <p class="mb-4 text-dark-text">Se você tiver alguma dúvida sobre esta Política de Privacidade, entre em contato conosco:</p>
+            <ul class="list-disc list-inside ml-4 mb-4 text-dark-text">
+                <li>Por e-mail: <a href="mailto:contato@seudominio.com" class="text-interactive-accent hover:underline">contato@seudominio.com</a></li>
+            </ul>
+        </section>
+
     </main>
 
     <footer class="bg-primary-dark text-white p-8 mt-12">
         <div class="container mx-auto text-center md:flex md:justify-between md:items-center">
-            <div class="mb-6 md:mb-0 text-center md:text-left">
-                <h3 class="text-2xl font-serif font-bold header-logo-gold">TIP</h3>
+            <div class="mb-4 md:mb-0">
+                <h3 class="text-2xl font-serif font-bold text-secondary-gold">TIP</h3>
                 <p class="text-sm mt-2">Boas notícias para tempos urgentes.</p>
             </div>
-            <nav class="flex flex-col space-y-2 text-sm mb-6 md:mb-0 md:flex-row md:space-y-0 md:space-x-6 text-center">
-                <a href="politica-de-privacidade.html" class="hover:text-secondary-gold transition-colors">Política de Privacidade</a>
+            <nav class="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-6 text-sm">
+                <a href="privacidade.html" class="hover:text-secondary-gold transition-colors">Política de Privacidade</a>
                 <a href="#" class="hover:text-secondary-gold transition-colors">Termos de Uso</a>
                 <a href="#" class="hover:text-secondary-gold transition-colors">Trabalhe Conosco</a>
                 <a href="#" class="hover:text-secondary-gold transition-colors">Anuncie</a>
             </nav>
-            <div class="mt-4 md:mt-0 text-lg flex justify-center space-x-4">
-                <a href="#" class="hover:text-secondary-gold transition-colors"><i class="fab fa-facebook-f"></i></a>
-                <a href="#" class="hover:text-secondary-gold transition-colors"><i class="fab fa-twitter"></i></a>
-                <a href="#" class="hover:text-secondary-gold transition-colors"><i class="fab fa-instagram"></i></a>
-                <a href="#" class="hover:text-secondary-gold transition-colors"><i class="fab fa-linkedin-in"></i></a>
+            <div class="mt-4 md:mt-0 text-lg">
+                <a href="#" class="mx-2 hover:text-secondary-gold transition-colors"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="mx-2 hover:text-secondary-gold transition-colors"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="mx-2 hover:text-secondary-gold transition-colors"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="mx-2 hover:text-secondary-gold transition-colors"><i class="fab fa-linkedin-in"></i></a>
             </div>
         </div>
         <div class="text-center text-sm mt-8 opacity-75">
@@ -221,20 +217,31 @@
         </div>
     </footer>
 
+    <!-- Script para o menu hambúrguer e ano atual -->
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const menuButton = document.getElementById('mobile-menu-button');
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
             const mobileMenu = document.getElementById('mobile-menu');
 
-            menuButton.addEventListener('click', () => {
-                mobileMenu.classList.toggle('hidden');
-            });
+            if (mobileMenuButton && mobileMenu) {
+                mobileMenuButton.addEventListener('click', function() {
+                    mobileMenu.classList.toggle('hidden');
+                    // Opcional: Altera o ícone do hambúrguer para um 'X'
+                    if (mobileMenu.classList.contains('hidden')) {
+                        mobileMenuButton.innerHTML = '&#9776;'; // Hambúrguer
+                    } else {
+                        mobileMenuButton.innerHTML = '&times;'; // X
+                    }
+                });
+            }
 
-            document.getElementById('current-year').textContent = new Date().getFullYear();
+            // Atualiza o ano no rodapé
+            const currentYearSpan = document.getElementById('current-year');
+            if (currentYearSpan) {
+                currentYearSpan.textContent = new Date().getFullYear();
+            }
         });
     </script>
-    
-    <!-- Lembre-se de substituir 'your-font-awesome-kit-id.js' pelo seu kit real, se tiver um. -->
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/your-font-awesome-kit-id.js" crossorigin="anonymous"></script>
 </body>
 </html>
